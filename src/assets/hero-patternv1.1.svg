@@ -1,0 +1,27 @@
+<svg width="1000" height="1000" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1_2)">
+<path d="M450 500L418 119.111L600 200L450 500Z" fill="#0f1c3f"/>
+<path d="M250 250L150 0L418 119.111L450 500L350 375L250 250Z" fill="#13244d"/>
+<path d="M600 200L150 0H550L600 200Z" fill="#070d1f"/>
+<path d="M1000 200L550 0H1000V200Z" fill="#0a132b"/>
+<path d="M600 200H1000L800 400L600 200Z" fill="#0f1c3f"/>
+<path d="M600 200L550 0L1000 200H600Z" fill="#13244d"/>
+<path d="M800 400L1000 200V600L800 400Z" fill="#070d1f"/>
+<path d="M700 650L800 400L1000 600L700 650Z" fill="#080f26"/>
+<path d="M700 650L613.5 404L566 268L600 200L800 400L700 650Z" fill="#0c1736"/>
+<path d="M566 268L700 650L450 500L566 268Z" fill="#111f42"/>
+<path d="M450 500L444 492.5L350 375L250 250L200 600L450 500Z" fill="#1a2b5e"/>
+<path d="M0 1000L200 600L350 850L100 1000H0Z" fill="#13244d"/>
+<path d="M746 848L200 600L450 500L700 650L746 848Z" fill="#0a132b"/>
+<path d="M200 600L746 848H348.182L200 600Z" fill="#0f1c3f"/>
+<path d="M1000 850V998L700 650L1000 600V850Z" fill="#13244d"/>
+<path d="M700 650L851.453 822.509L1000 998L800 1000L746 847.5L700 650Z" fill="#070d1f"/>
+<path d="M800 1000H418L746 848L800 1000Z" fill="#080f26"/>
+<path d="M100 1000L348.462 848H746L415.546 1000H100Z" fill="#0c1736"/>
+</g>
+<defs>
+<clipPath id="clip0_1_2">
+<rect width="1000" height="1000" fill="white"/>
+</clipPath>
+</defs>
+</svg>

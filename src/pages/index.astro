@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../config/site';
+
+const pageTitle = `${siteConfig.name} | Soluciones Digitales`;
+---
+
+<Layout title={pageTitle} description={siteConfig.description}>
+  <Header />
+  <main class="flex-grow">
+    <Hero />
+    <Features />
+    <CTA />
+  </main>
+  <Footer />
+</Layout>

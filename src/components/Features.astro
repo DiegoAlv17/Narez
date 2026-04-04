@@ -1,0 +1,32 @@
+---
+import { landingData } from '../data/landing';
+---
+
+<section id="servicios" class="py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-24">
+      <h2 class="text-5xl md:text-8xl font-bold text-slate-900 uppercase tracking-tighter leading-none">
+        Nuestros <br/><span class="text-blue-600">Servicios</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-20">
+      {landingData.features.map((feature) => (
+        <div class="group cursor-pointer">
+          <!-- L�nea superior animada tipo corporativo -->
+          <div class="h-1 w-full bg-slate-200 mb-8 relative overflow-hidden">
+            <div class="absolute top-0 left-0 h-full w-0 bg-blue-600 group-hover:w-full transition-all duration-700 ease-out"></div>
+          </div>
+          <h3 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 group-hover:text-blue-600 transition-colors uppercase tracking-tighter leading-none">{feature.title}</h3>
+          <p class="text-xl text-slate-600 leading-relaxed font-medium mb-10 max-w-lg">
+            {feature.description}
+          </p>
+          <div class="flex items-center text-blue-600 font-semibold group-hover:text-blue-800 transition-colors">
+            <span class="mr-4 uppercase tracking-widest text-sm">Explorar</span>
+            <svg class="w-6 h-6 transform group-hover:translate-x-3 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
