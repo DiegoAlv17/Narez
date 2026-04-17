@@ -1,16 +1,5 @@
 ---
 import { landingData } from '../data/landing';
-import webIcon from '../assets/web.svg';
-import systemIcon from '../assets/system.svg';
-import customIcon from '../assets/custom.svg';
-import aiIcon from '../assets/ai.svg';
-
-const iconMap: Record<string, any> = {
-  web: webIcon,
-  system: systemIcon,
-  custom: customIcon,
-  ai: aiIcon,
-};
 ---
 
 <section id="servicios" class="py-32 bg-slate-950">
@@ -23,34 +12,23 @@ const iconMap: Record<string, any> = {
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 features-grid">
       {landingData.features.map((feature, idx) => (
-        <div class="group cursor-pointer feature-card relative overflow-hidden bg-slate-900/50 border border-slate-800 flex flex-col h-[480px] p-8 transition-colors duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10">
+        <div class="group cursor-pointer feature-card relative overflow-hidden bg-slate-900/50 border border-slate-800 flex flex-col p-8 transition-colors duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10">
           
           <div class="text-xs font-bold tracking-widest text-slate-500 mb-6 uppercase shrink-0">Servicio</div>
           
-          <h3 class="text-2xl font-bold text-white leading-tight shrink-0 relative z-20 transition-colors duration-500 group-hover:text-blue-400">
+          <h3 class="text-2xl font-bold text-white leading-tight mb-6 transition-colors duration-500 group-hover:text-blue-400">
             {feature.title}
           </h3>
           
-          <!-- Contenedor inferior relativo que albergará la animación cruzada -->
-          <div class="relative flex-grow w-full h-full mt-4 overflow-hidden pointer-events-none">
-            
-            <!-- Contenedor de la Imagen SVG (Se va a la izquierda en hover) -->
-            <div class="absolute inset-0 flex items-end justify-center pb-4 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-x-full group-hover:opacity-0">
-              <img src={iconMap[feature.icon].src} alt={feature.title} class="w-full max-w-[220px] h-auto object-contain opacity-50" />
-            </div>
+          <p class="text-lg text-slate-300 leading-relaxed font-medium mb-auto">
+            {feature.description}
+          </p>
 
-            <!-- Contenedor del Texto y Link (Entra desde la derecha en hover) -->
-            <div class="absolute inset-0 flex flex-col justify-end transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
-              <p class="text-lg text-slate-300 leading-relaxed font-medium mb-10 pointer-events-auto">
-                {feature.description}
-              </p>
-              <div class="flex items-center text-white font-bold group-hover:text-blue-400 transition-colors pointer-events-auto">
-                <span class="mr-4 uppercase tracking-widest text-sm">Explorar</span>
-                <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" d="M9 5l7 7-7 7"></path></svg>
-              </div>
-            </div>
-            
+          <div class="flex items-center text-white font-bold group-hover:text-blue-400 transition-colors mt-12">
+            <span class="mr-4 uppercase tracking-widest text-sm">Explorar</span>
+            <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" d="M9 5l7 7-7 7"></path></svg>
           </div>
+          
         </div>
       ))}
     </div>
