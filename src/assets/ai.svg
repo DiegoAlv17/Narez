@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Central node -->
+  <circle cx="200" cy="150" r="30" stroke-width="4"/>
+  <circle cx="200" cy="150" r="10" fill="#94a3b8"/>
+
+  <!-- Top node -->
+  <circle cx="200" cy="50" r="15" stroke-width="3"/>
+  <line x1="200" y1="120" x2="200" y2="65" stroke-width="3"/>
+
+  <!-- Bottom Left node -->
+  <circle cx="100" cy="230" r="15" stroke-width="3"/>
+  <line x1="175" y1="165" x2="115" y2="215" stroke-width="3"/>
+
+  <!-- Bottom Right node -->
+  <circle cx="300" cy="230" r="15" stroke-width="3"/>
+  <line x1="225" y1="165" x2="285" y2="215" stroke-width="3"/>
+
+  <!-- Left node -->
+  <circle cx="60" cy="120" r="15" stroke-width="3"/>
+  <line x1="170" y1="140" x2="75" y2="125" stroke-width="3"/>
+
+  <!-- Right node -->
+  <circle cx="340" cy="120" r="15" stroke-width="3"/>
+  <line x1="230" y1="140" x2="325" y2="125" stroke-width="3"/>
+
+  <!-- Connections between outer nodes -->
+  <path d="M185 50 L75 115" stroke-dasharray="4 4" stroke-width="1.5"/>
+  <path d="M215 50 L325 115" stroke-dasharray="4 4" stroke-width="1.5"/>
+  <path d="M100 215 L65 135" stroke-dasharray="4 4" stroke-width="1.5"/>
+  <path d="M300 215 L335 135" stroke-dasharray="4 4" stroke-width="1.5"/>
+</svg>

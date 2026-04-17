@@ -1,32 +1,100 @@
 ---
 import { landingData } from '../data/landing';
+import webIcon from '../assets/web.svg';
+import systemIcon from '../assets/system.svg';
+import customIcon from '../assets/custom.svg';
+import aiIcon from '../assets/ai.svg';
+
+const iconMap: Record<string, any> = {
+  web: webIcon,
+  system: systemIcon,
+  custom: customIcon,
+  ai: aiIcon,
+};
 ---
 
-<section id="servicios" class="py-32 bg-white">
+<section id="servicios" class="py-32 bg-slate-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mb-24">
-      <h2 class="text-5xl md:text-8xl font-bold text-slate-900 uppercase tracking-tighter leading-none">
+    <div class="mb-24 feature-header">
+      <h2 class="text-5xl md:text-8xl font-bold text-slate-900 uppercase tracking-tighter leading-none inline-block">
         Nuestros <br/><span class="text-blue-600">Servicios</span>
       </h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-20">
-      {landingData.features.map((feature) => (
-        <div class="group cursor-pointer">
-          <!-- L�nea superior animada tipo corporativo -->
-          <div class="h-1 w-full bg-slate-200 mb-8 relative overflow-hidden">
-            <div class="absolute top-0 left-0 h-full w-0 bg-blue-600 group-hover:w-full transition-all duration-700 ease-out"></div>
-          </div>
-          <h3 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 group-hover:text-blue-600 transition-colors uppercase tracking-tighter leading-none">{feature.title}</h3>
-          <p class="text-xl text-slate-600 leading-relaxed font-medium mb-10 max-w-lg">
-            {feature.description}
-          </p>
-          <div class="flex items-center text-blue-600 font-semibold group-hover:text-blue-800 transition-colors">
-            <span class="mr-4 uppercase tracking-widest text-sm">Explorar</span>
-            <svg class="w-6 h-6 transform group-hover:translate-x-3 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" d="M9 5l7 7-7 7"></path></svg>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 features-grid">
+      {landingData.features.map((feature, idx) => (
+        <div class="group cursor-pointer feature-card relative overflow-hidden bg-white border border-slate-200 flex flex-col h-[480px] p-8 transition-colors duration-500 hover:border-blue-600/30 hover:shadow-2xl hover:shadow-blue-900/5">
+          
+          <div class="text-xs font-bold tracking-widest text-slate-400 mb-6 uppercase shrink-0">Servicio</div>
+          
+          <h3 class="text-2xl font-bold text-slate-900 leading-tight shrink-0 relative z-20 transition-colors duration-500 group-hover:text-blue-600">
+            {feature.title}
+          </h3>
+          
+          <!-- Contenedor inferior relativo que albergará la animación cruzada -->
+          <div class="relative flex-grow w-full h-full mt-4 overflow-hidden pointer-events-none">
+            
+            <!-- Contenedor de la Imagen SVG (Se va a la izquierda en hover) -->
+            <div class="absolute inset-0 flex items-end justify-center pb-4 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-x-full group-hover:opacity-0">
+              <img src={iconMap[feature.icon].src} alt={feature.title} class="w-full max-w-[220px] h-auto object-contain opacity-60" />
+            </div>
+
+            <!-- Contenedor del Texto y Link (Entra desde la derecha en hover) -->
+            <div class="absolute inset-0 flex flex-col justify-end transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+              <p class="text-lg text-slate-600 leading-relaxed font-medium mb-10 pointer-events-auto">
+                {feature.description}
+              </p>
+              <div class="flex items-center text-slate-900 font-bold group-hover:text-blue-600 transition-colors pointer-events-auto">
+                <span class="mr-4 uppercase tracking-widest text-sm">Explorar</span>
+                <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" d="M9 5l7 7-7 7"></path></svg>
+              </div>
+            </div>
+            
           </div>
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const mm = gsap.matchMedia();
+
+  mm.add("(prefers-reduced-motion: no-preference)", () => {
+    // Animación de entrada para el título principal
+    gsap.from(".feature-header h2", {
+      scrollTrigger: {
+        trigger: ".feature-header",
+        start: "top 80%",
+        toggleActions: "play reverse play reverse" // Se reproduce al bajar, se invierte al subir
+      },
+      y: 60,
+      autoAlpha: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+
+    // Animación escalonada (staggered) de cada tarjeta 
+    // Usamos el grid como trigger para que inicien en cascada
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".features-grid",
+        start: "top 80%", // Se activa cuando el grid alcanza el 80% de la pantalla
+        toggleActions: "play reverse play reverse" // Permite repetir la animación en ambos sentidos
+      }
+    });
+
+    tl.from(".feature-card", {
+      y: 80,
+      autoAlpha: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: "power2.out"
+    });
+  });
+</script>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M120 120 L280 120 L320 200 L80 200 Z" stroke-width="3"/>
+  <rect x="180" y="60" width="40" height="60" stroke-width="3"/>
+  <line x1="200" y1="120" x2="200" y2="180" stroke-width="3"/>
+  
+  <path d="M40 240 L120 240 M280 240 L360 240" stroke-width="3"/>
+  <circle cx="120" cy="240" r="4" fill="#94a3b8"/>
+  <circle cx="280" cy="240" r="4" fill="#94a3b8"/>
+  
+  <path d="M160 160 L240 160 M200 160 L200 120" stroke-width="3"/>
+  <polygon points="190,100 200,80 210,100" fill="#94a3b8"/>
+
+  <!-- Code brackets symbols -->
+  <path d="M80 60 L60 80 L80 100" stroke-width="3"/>
+  <path d="M320 60 L340 80 L320 100" stroke-width="3"/>
+</svg>
