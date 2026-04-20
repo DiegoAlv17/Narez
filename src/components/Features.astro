@@ -1,27 +1,27 @@
----
+﻿---
 import { landingData } from '../data/landing';
 ---
 
-<section id="servicios" class="py-32 bg-slate-950">
+<section id="servicios" class="py-32 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-24 feature-header">
-      <h2 class="text-5xl md:text-8xl font-bold text-white uppercase tracking-tighter leading-none">
-        Nuestros <br/><span class="text-blue-500">Servicios</span>
+      <h2 class="text-5xl md:text-8xl font-bold text-slate-900 uppercase tracking-tighter leading-none">
+        Nuestros <br/><span class="text-blue-600">Servicios</span>
       </h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-20 features-grid">
       {landingData.features.map((feature, idx) => (
         <div class="group cursor-pointer feature-card">
-          <!-- Línea superior animada tipo corporativo -->
-          <div class="h-1 w-full bg-slate-800 mb-8 relative overflow-hidden">
-            <div class="absolute top-0 left-0 h-full w-0 bg-blue-500 group-hover:w-full transition-all duration-700 ease-out"></div>
+          <!-- LÃ­nea superior animada tipo corporativo -->
+          <div class="h-1 w-full bg-slate-200 mb-8 relative overflow-hidden">
+            <div class="absolute top-0 left-0 h-full w-0 bg-blue-600 group-hover:w-full transition-all duration-700 ease-out"></div>
           </div>
-          <h3 class="text-3xl md:text-5xl font-bold text-white mb-6 group-hover:text-blue-400 transition-colors uppercase tracking-tighter leading-none">{feature.title}</h3>
-          <p class="text-xl text-slate-400 leading-relaxed font-medium mb-10 max-w-lg">
+          <h3 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 group-hover:text-blue-600 transition-colors uppercase tracking-tighter leading-none">{feature.title}</h3>
+          <p class="text-xl text-slate-600 leading-relaxed font-medium mb-10 max-w-lg">
             {feature.description}
           </p>
-          <div class="flex items-center text-blue-500 font-semibold group-hover:text-blue-400 transition-colors">
+          <div class="flex items-center text-blue-600 font-semibold group-hover:text-blue-800 transition-colors">
             <span class="mr-4 uppercase tracking-widest text-sm">Explorar</span>
             <svg class="w-6 h-6 transform group-hover:translate-x-3 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" d="M9 5l7 7-7 7"></path></svg>
           </div>
@@ -40,7 +40,7 @@ import { landingData } from '../data/landing';
   const mm = gsap.matchMedia();
 
   mm.add("(prefers-reduced-motion: no-preference)", () => {
-    // Animación de entrada para el título principal
+    // AnimaciÃ³n de entrada para el tÃ­tulo principal
     gsap.from(".feature-header h2", {
       scrollTrigger: {
         trigger: ".feature-header",
@@ -53,13 +53,13 @@ import { landingData } from '../data/landing';
       ease: "power3.out"
     });
 
-    // Animación escalonada (staggered) de cada tarjeta 
+    // AnimaciÃ³n escalonada (staggered) de cada tarjeta 
     // Usamos el grid como trigger para que inicien en cascada
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".features-grid",
         start: "top 80%", // Se activa cuando el grid alcanza el 80% de la pantalla
-        toggleActions: "play reverse play reverse" // Permite repetir la animación en ambos sentidos
+        toggleActions: "play reverse play reverse" // Permite repetir la animaciÃ³n en ambos sentidos
       }
     });
 
@@ -72,3 +72,4 @@ import { landingData } from '../data/landing';
     });
   });
 </script>
+

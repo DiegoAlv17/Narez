@@ -1,3 +1,14 @@
+export interface NavItem {
+  label: string;
+  href: string;
+}
+
+export interface ProcessStep {
+  n: string;
+  title: string;
+  desc: string;
+}
+
 export const landingData = {
   hero: {
     title: "Potencia tu negocio con Soluciones Digitales",
@@ -36,5 +47,32 @@ export const landingData = {
   socialProof: {
     title: "Confían en la tecnología Narez",
     // placeholder for logos/clients
-  }
+  },
+  navItems: [
+    { label: "Servicios", href: "#servicios" },
+    { label: "Proceso", href: "#proceso" },
+    { label: "Beneficios", href: "#beneficios" }
+  ] as NavItem[],
+  processSteps: [
+    {
+      n: "01",
+      title: "Descubrimiento",
+      desc: "Analizamos tu negocio, retos actuales y objetivos. Definimos KPIs claros y un roadmap accionable.",
+    },
+    {
+      n: "02",
+      title: "Diseño & Arquitectura",
+      desc: "Prototipamos la experiencia y diseñamos la arquitectura técnica pensando en escalabilidad y mantenibilidad.",
+    },
+    {
+      n: "03",
+      title: "Desarrollo iterativo",
+      desc: "Construimos por sprints, mostrando avances semanales. Tú validas, nosotros iteramos.",
+    },
+    {
+      n: "04",
+      title: "Lanzamiento & Evolución",
+      desc: "Desplegamos con monitoreo activo y acompañamos el crecimiento con mejoras continuas.",
+    },
+  ] as ProcessStep[],
 };

@@ -1,33 +1,43 @@
----
+﻿---
 import { siteConfig } from '../config/site';
+import { landingData } from '../data/landing';
 ---
 
 <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/10 transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-center md:justify-between items-center h-16 lg:h-20 relative">
-      <div class="flex-shrink-0 flex items-center header-logo">
-        <a href="/" class="flex items-center gap-3 group" aria-label={`Inicio ${siteConfig.name}`}>
-          <!-- Filtro invertido en CSS para hacer el logo visible sobre fondo oscuro -->
+    <div class="grid grid-cols-2 md:grid-cols-3 items-center h-16 lg:h-20 relative">
+      
+      <!-- Lado Izquierdo: Logo -->
+      <div class="flex items-center justify-start header-logo">
+        <a href="/" class="flex flex-row items-center justify-start gap-3 group" aria-label={`Inicio ${siteConfig.name}`}>
           <img src="/logo.svg" alt={`Logo de ${siteConfig.name}`} class="h-6 lg:h-7 w-auto invert brightness-0 transition-transform duration-300 group-hover:scale-110 relative z-10" />
-          <span class="font-syne font-semibold text-xl lg:text-2xl tracking-tighter text-white uppercase max-w-0 opacity-0 -translate-x-4 transition-all duration-500 ease-in-out group-hover:max-w-[200px] group-hover:opacity-100 group-hover:translate-x-0 overflow-hidden whitespace-nowrap">{siteConfig.name}</span>
+          <span class=" font-semibold text-xl lg:text-2xl tracking-tighter text-white uppercase max-w-0 opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[200px] group-hover:opacity-100 overflow-hidden whitespace-nowrap">{siteConfig.name}</span>
         </a>
       </div>
-      
-      <!-- Navegaci�n de Escritorio -->
-      <nav class="hidden md:flex space-x-10 items-center header-links">
-        <a href="#servicios" class="text-xs font-semibold tracking-widest text-slate-300 hover:text-white uppercase transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left">Servicios</a>
-        <a href="#nosotros" class="text-xs font-semibold tracking-widest text-slate-300 hover:text-white uppercase transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left">Nosotros</a>
-        <a href="#contacto" class="text-xs font-semibold tracking-widest text-slate-300 hover:text-white uppercase transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left">Contacto</a>
+
+      <!-- Centro: Links de Navegación -->
+      <nav class="hidden md:flex justify-center space-x-10 items-center header-links">
+        {landingData.navItems.map((item) => (
+          <a href={item.href} class="text-xs font-semibold tracking-widest text-slate-300 hover:text-white uppercase transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left">
+            {item.label}
+          </a>
+        ))}
       </nav>
 
-      <!-- Botón Menú Móvil -->
-      <div class="absolute left-0 md:static flex items-center md:hidden header-mobile-btn">
-        <button type="button" class="text-white hover:text-blue-500 transition-colors p-2" aria-expanded="false" aria-label="Abrir menú">
+      <!-- Lado Derecho: Hablemos CTA -->
+      <div class="flex items-center justify-end gap-4 header-cta">
+        <a href="#contacto" class="hidden md:inline-flex items-center justify-center px-8 py-2.5 text-xs font-semibold tracking-widest text-white uppercase transition-all duration-300 bg-blue-600 hover:bg-blue-700 shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_25px_rgba(37,99,235,0.5)] border border-transparent hover:border-blue-400/30 -skew-x-12">
+          <span class="skew-x-12">Hablemos</span>
+        </a>
+        
+        <!-- Botón Menú Móvil -->
+        <button type="button" class="md:hidden text-white hover:text-blue-500 transition-colors p-2" aria-expanded="false" aria-label="Abrir menú">
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="square" stroke-linejoin="miter" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
       </div>
+
     </div>
   </div>
 </header>
@@ -42,7 +52,7 @@ import { siteConfig } from '../config/site';
   const tl = gsap.timeline();
   tl.from(".header-logo", { y: -20, autoAlpha: 0, duration: 0.8, ease: "power3.out", delay: 0.2 })
     .from(".header-links a", { y: -20, autoAlpha: 0, duration: 0.6, stagger: 0.1, ease: "power3.out" }, "-=0.6")
-    .from(".header-mobile-btn", { autoAlpha: 0, duration: 0.4 }, "-=0.4");
+    .from(".header-cta", { y: -20, autoAlpha: 0, duration: 0.4 }, "-=0.4");
 
   // Ocultar/Mostrar el header al hacer scroll (Advanced Reveal)
   const showAnim = gsap.from("#main-header", { 
@@ -65,3 +75,6 @@ import { siteConfig } from '../config/site';
     }
   });
 </script>
+
+
+
