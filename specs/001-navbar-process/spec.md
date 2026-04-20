@@ -75,7 +75,7 @@ As a visitor scrolling through the landing page, I want to read about the compan
 - **FR-008**: System MUST make the centered text in the "Proceso" section sticky, maintaining its position while the user scrolls through the section.
 - **FR-009**: System MUST display four distinct process steps (01 to 04) with their respective titles and descriptions.
 - **FR-010**: System MUST implement an "elevator effect" (parallax or scrolling translation) for the process steps relative to the sticky centered text during scroll.
-- **FR-011**: System MUST [NEEDS CLARIFICATION: Should the "Hablemos" element link to a specific section (e.g., footer contact form), open a modal, or redirect to an external mail/contact page?]
+- **FR-011**: System MUST smoothly scroll the user down to the contact section on the page when the "Hablemos" element is clicked.
 
 ### Edge Cases
 
