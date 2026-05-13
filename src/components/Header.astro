@@ -9,25 +9,25 @@ import { landingData } from '../data/landing';
       
       <!-- Lado Izquierdo: Logo -->
       <div class="flex items-center justify-start header-logo">
-        <a href="/" class="flex flex-row items-center justify-start gap-3 group" aria-label={`Inicio ${siteConfig.name}`}>
+        <a href="/" class="flex items-center gap-3 group" aria-label={`Inicio ${siteConfig.name}`}>
           <img src="/logo.svg" alt={`Logo de ${siteConfig.name}`} class="h-6 lg:h-7 w-auto invert brightness-0 transition-transform duration-300 group-hover:scale-110 relative z-10" />
-          <span class=" font-semibold text-xl lg:text-2xl tracking-tighter text-white uppercase max-w-0 opacity-0 transition-all duration-500 ease-in-out group-hover:max-w-[200px] group-hover:opacity-100 overflow-hidden whitespace-nowrap">{siteConfig.name}</span>
+          <span class=" font-semibold text-xl lg:text-2xl tracking-tighter text-white uppercase max-w-0 opacity-0 transition-all duration-500 group-hover:max-w-50 group-hover:opacity-100 overflow-hidden whitespace-nowrap">{siteConfig.name}</span>
         </a>
       </div>
 
       <!-- Centro: Links de Navegación -->
-      <nav class="hidden md:flex justify-center space-x-10 items-center header-links">
+      <nav class="hidden md:flex items-center gap-10 header-links">
         {landingData.navItems.map((item) => (
-          <a href={item.href} class="text-xs font-semibold tracking-widest text-slate-300 hover:text-white uppercase transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left">
+          <a href={item.href} class="text-xs font-semibold tracking-widest text-white uppercase transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left">
             {item.label}
           </a>
         ))}
       </nav>
 
-      <!-- Lado Derecho: Hablemos CTA -->
+      <!-- Lado Derecho: Contactanos CTA -->
       <div class="flex items-center justify-end gap-4 header-cta">
         <a href="#contacto" class="hidden md:inline-flex items-center justify-center px-8 py-2.5 text-xs font-semibold tracking-widest text-white uppercase transition-all duration-300 bg-blue-600 hover:bg-blue-700 shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_25px_rgba(37,99,235,0.5)] border border-transparent hover:border-blue-400/30 -skew-x-12">
-          <span class="skew-x-12">Hablemos</span>
+          <span class="skew-x-12">Contáctanos</span>
         </a>
         
         <!-- Botón Menú Móvil -->

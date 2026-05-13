@@ -14,8 +14,8 @@ import { landingData } from '../data/landing';
       {landingData.features.map((feature, idx) => (
         <div class="group cursor-pointer feature-card">
           <!-- LÃ­nea superior animada tipo corporativo -->
-          <div class="h-1 w-full bg-slate-200 mb-8 relative overflow-hidden">
-            <div class="absolute top-0 left-0 h-full w-0 bg-blue-600 group-hover:w-full transition-all duration-700 ease-out"></div>
+          <div class="h-1 bg-slate-200 mb-8 relative overflow-hidden">
+            <div class="absolute inset-y-0 left-0 w-0 bg-blue-600 group-hover:w-full transition-all duration-700 ease-out"></div>
           </div>
           <h3 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 group-hover:text-blue-600 transition-colors uppercase tracking-tighter leading-none">{feature.title}</h3>
           <p class="text-xl text-slate-600 leading-relaxed font-medium mb-10 max-w-lg">
