@@ -1,0 +1,80 @@
+<svg class="finale-pattern pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1600 1400" preserveAspectRatio="none" aria-hidden="true">
+  <g>
+    <path class="finale-pattern-line" d="M-120 250C210 56 490 142 790 390S1240 820 1720 670" />
+    <path class="finale-pattern-light" d="M-120 250C210 56 490 142 790 390S1240 820 1720 670" pathLength="1" />
+  </g>
+  <g>
+    <path class="finale-pattern-line finale-pattern-line--soft" d="M-180 830C190 594 500 620 790 850S1270 1140 1730 900" />
+    <path class="finale-pattern-light finale-pattern-light--2" d="M-180 830C190 594 500 620 790 850S1270 1140 1730 900" pathLength="1" />
+  </g>
+  <g>
+    <path class="finale-pattern-line" d="M390 1510C380 1130 590 880 870 720S1350 390 1580-100" />
+    <path class="finale-pattern-light finale-pattern-light--3" d="M390 1510C380 1130 590 880 870 720S1350 390 1580-100" pathLength="1" />
+  </g>
+  <g>
+    <path class="finale-pattern-line finale-pattern-line--soft" d="M1160-120C1480 180 1490 520 1260 760S790 1080 560 1510" />
+    <path class="finale-pattern-light finale-pattern-light--4" d="M1160-120C1480 180 1490 520 1260 760S790 1080 560 1510" pathLength="1" />
+  </g>
+  <ellipse cx="1280" cy="1035" rx="108" ry="62" class="finale-pattern-orbit" />
+  <circle cx="1280" cy="1035" r="4" class="finale-pattern-node" />
+  <circle cx="310" cy="535" r="3" class="finale-pattern-node finale-pattern-node--soft" />
+</svg>
+
+<style>
+  .finale-pattern-line,
+  .finale-pattern-light,
+  .finale-pattern-orbit {
+    fill: none;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .finale-pattern-line {
+    stroke: var(--narez-metal);
+    stroke-width: 1.1;
+    opacity: 0.23;
+  }
+
+  .finale-pattern-line--soft {
+    stroke: var(--narez-ink);
+    opacity: 0.11;
+  }
+
+  .finale-pattern-light {
+    stroke: var(--narez-ink);
+    stroke-width: 1.35;
+    stroke-linecap: round;
+    stroke-dasharray: 0.018 0.3;
+    stroke-dashoffset: 0.08;
+    opacity: 0.13;
+  }
+
+  .finale-pattern-light--2 {
+    stroke: var(--narez-metal);
+    stroke-dashoffset: 0.16;
+  }
+
+  .finale-pattern-light--3 {
+    stroke-dashoffset: 0.24;
+  }
+
+  .finale-pattern-light--4 {
+    stroke: var(--narez-metal);
+    stroke-dashoffset: 0.32;
+  }
+
+  .finale-pattern-orbit {
+    stroke: var(--narez-metal);
+    stroke-width: 1;
+    opacity: 0.18;
+  }
+
+  .finale-pattern-node {
+    fill: var(--narez-metal);
+    opacity: 0.42;
+  }
+
+  .finale-pattern-node--soft {
+    fill: var(--narez-ink);
+    opacity: 0.16;
+  }
+</style>

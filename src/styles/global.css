@@ -1,9 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 @import "tailwindcss";
+
+:root {
+  --narez-metal: #496578;
+  --narez-ink: #0a0a0a;
+  --narez-paper: #f5f5f3;
+  --narez-browser-scale: 1;
+  --narez-zoom-scale: 1;
+}
 
 @layer base {
   body {
     font-family: 'Space Grotesk', sans-serif;
+    background: var(--narez-ink);
+  }
+
+  html.menu-is-open {
+    overscroll-behavior: none;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: calc(16px * var(--narez-zoom-scale, 1));
+    }
+  }
+}
+
+@layer utilities {
+  .narez-metal-shadow {
+    box-shadow: 0 0 24px rgb(73 101 120 / 24%);
+  }
+
+  .narez-display {
+    font-family: 'Bodoni Moda', Georgia, serif;
   }
 }
 

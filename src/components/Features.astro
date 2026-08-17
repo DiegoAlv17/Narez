@@ -2,30 +2,30 @@
 import { landingData } from '../data/landing';
 ---
 
-<section id="servicios" class="py-32 bg-white">
+<section id="servicios" class="relative z-[1] bg-neutral-950 py-32 text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-24 feature-header">
-      <h2 class="text-5xl md:text-8xl font-bold text-slate-900 uppercase tracking-tighter leading-none">
-        Nuestros <br/><span class="text-blue-600">Servicios</span>
+      <h2 class="text-5xl md:text-8xl font-bold text-white uppercase tracking-tighter leading-none">
+        Nuestros <br/><span class="text-[var(--narez-metal)]">Servicios</span>
       </h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-20 features-grid">
-      {landingData.features.map((feature, idx) => (
-        <div class="group cursor-pointer feature-card">
-          <!-- LÃ­nea superior animada tipo corporativo -->
-          <div class="h-1 bg-slate-200 mb-8 relative overflow-hidden">
-            <div class="absolute inset-y-0 left-0 w-0 bg-blue-600 group-hover:w-full transition-all duration-700 ease-out"></div>
+      {landingData.features.map((feature) => (
+        <a href="#contacto" class="group feature-card block rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-[var(--narez-metal)] focus-visible:ring-offset-8 focus-visible:ring-offset-neutral-950" aria-label={`Consultar sobre ${feature.title}`}>
+          <!-- Línea superior animada tipo corporativo -->
+          <div class="relative mb-8 h-1 overflow-hidden bg-neutral-800">
+            <div class="absolute inset-y-0 left-0 w-0 bg-[var(--narez-metal)] group-hover:w-full transition-all duration-700 ease-out"></div>
           </div>
-          <h3 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 group-hover:text-blue-600 transition-colors uppercase tracking-tighter leading-none">{feature.title}</h3>
-          <p class="text-xl text-slate-600 leading-relaxed font-medium mb-10 max-w-lg">
+          <h3 class="mb-6 text-3xl font-bold uppercase leading-none tracking-tighter text-white transition-colors group-hover:text-[var(--narez-metal)] md:text-5xl">{feature.title}</h3>
+          <p class="mb-10 max-w-lg text-xl font-medium leading-relaxed text-neutral-300">
             {feature.description}
           </p>
-          <div class="flex items-center text-blue-600 font-semibold group-hover:text-blue-800 transition-colors">
+          <div class="flex items-center text-[var(--narez-metal)] font-semibold group-hover:brightness-75 transition-colors">
             <span class="mr-4 uppercase tracking-widest text-sm">Explorar</span>
-            <svg class="w-6 h-6 transform group-hover:translate-x-3 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" d="M9 5l7 7-7 7"></path></svg>
+            <svg class="w-6 h-6 transform group-hover:translate-x-3 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="square" stroke-linejoin="miter" d="M9 5l7 7-7 7"></path></svg>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   </div>

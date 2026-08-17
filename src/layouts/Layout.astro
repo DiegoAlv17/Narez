@@ -16,10 +16,27 @@ const { title, description = "Soluciones digitales Narez" } = Astro.props;
 <meta name="description" content={description} />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
+<script is:inline>
+  (() => {
+    const root = document.documentElement;
+    const updateZoomScale = () => {
+      const deviceScale = window.devicePixelRatio || 1;
+      const browserScale = Math.min(5, Math.max(0.2, 1 / deviceScale));
+      root.style.setProperty('--narez-zoom-scale', String(browserScale));
+    };
+
+    updateZoomScale();
+    window.addEventListener('resize', updateZoomScale, { passive: true });
+    window.visualViewport?.addEventListener('resize', updateZoomScale, { passive: true });
+  })();
+</script>
 </head>
-<body class="antialiased min-h-screen bg-slate-950 text-white selection:bg-blue-600 selection:text-white flex flex-col">
+<body class="antialiased min-h-screen bg-neutral-950 text-white selection:bg-[var(--narez-metal)] selection:text-white flex flex-col">
 <slot />
 </body>
 </html>

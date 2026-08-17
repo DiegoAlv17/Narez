@@ -1,0 +1,39 @@
+---
+import { landingData } from '../data/landing';
+
+interface Props {
+  preview?: boolean;
+}
+
+const { preview = false } = Astro.props;
+const actionClass = "group flex items-center justify-between bg-[var(--contact-action-bg)] px-10 py-6 text-xl font-black text-[var(--contact-action-ink)] outline-none transition duration-300 ease-in-out";
+---
+
+<div class="contact-content relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+    <div>
+      <h2 class="mb-8 text-6xl font-black uppercase leading-[0.9] tracking-tighter text-[var(--narez-ink)] md:text-7xl lg:text-[6rem]">
+        {landingData.cta.title}
+      </h2>
+      <p class="max-w-lg text-xl font-medium leading-relaxed text-[var(--contact-muted)] md:text-2xl">
+        {landingData.cta.description}
+      </p>
+    </div>
+    <div class="flex justify-start lg:justify-end">
+      {preview ? (
+        <div class={actionClass}>
+          <span class="uppercase tracking-widest">{landingData.cta.buttonText}</span>
+          <svg class="ml-6 h-8 w-8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="square" stroke-linejoin="miter" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+      ) : (
+        <a
+          href="https://wa.me/51907896723"
+          class={`${actionClass} hover:opacity-80 focus-visible:ring-2 focus-visible:ring-[var(--narez-metal)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--narez-paper)]`}
+        >
+          <span class="uppercase tracking-widest">{landingData.cta.buttonText}</span>
+          <svg class="ml-6 h-8 w-8 transform transition-transform group-hover:translate-x-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="square" stroke-linejoin="miter" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      )}
+    </div>
+  </div>
+</div>
