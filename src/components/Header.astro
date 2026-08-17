@@ -1,80 +1,209 @@
-﻿---
-import { siteConfig } from '../config/site';
+---
 import { landingData } from '../data/landing';
 ---
 
-<header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/10 transition-colors duration-300">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 md:grid-cols-3 items-center h-16 lg:h-20 relative">
-      
-      <!-- Lado Izquierdo: Logo -->
-      <div class="flex items-center justify-start header-logo">
-        <a href="/" class="flex items-center gap-3 group" aria-label={`Inicio ${siteConfig.name}`}>
-          <img src="/logo.svg" alt={`Logo de ${siteConfig.name}`} class="h-6 lg:h-7 w-auto invert brightness-0 transition-transform duration-300 group-hover:scale-110 relative z-10" />
-          <span class=" font-semibold text-xl lg:text-2xl tracking-tighter text-white uppercase max-w-0 opacity-0 transition-all duration-500 group-hover:max-w-50 group-hover:opacity-100 overflow-hidden whitespace-nowrap">{siteConfig.name}</span>
-        </a>
-      </div>
-
-      <!-- Centro: Links de Navegación -->
-      <nav class="hidden md:flex items-center gap-10 header-links">
-        {landingData.navItems.map((item) => (
-          <a href={item.href} class="text-xs font-semibold tracking-widest text-white uppercase transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left">
-            {item.label}
-          </a>
-        ))}
-      </nav>
-
-      <!-- Lado Derecho: Contactanos CTA -->
-      <div class="flex items-center justify-end gap-4 header-cta">
-        <a href="#contacto" class="hidden md:inline-flex items-center justify-center px-8 py-2.5 text-xs font-semibold tracking-widest text-white uppercase transition-all duration-300 bg-blue-600 hover:bg-blue-700 shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_25px_rgba(37,99,235,0.5)] border border-transparent hover:border-blue-400/30 -skew-x-12">
-          <span class="skew-x-12">Contáctanos</span>
-        </a>
-        
-        <!-- Botón Menú Móvil -->
-        <button type="button" class="md:hidden text-white hover:text-blue-500 transition-colors p-2" aria-expanded="false" aria-label="Abrir menú">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="square" stroke-linejoin="miter" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
-
-    </div>
-  </div>
+<header id="main-header" class="fixed left-0 top-1/2 z-[70] -translate-y-1/2 max-md:top-4 max-md:translate-y-0">
+  <button
+    type="button"
+    class="header-menu-toggle group flex h-20 w-[7.75rem] flex-col items-center justify-center gap-2 rounded-r-[2.5rem] border border-l-0 border-white/20 bg-neutral-950/80 text-white shadow-[0_12px_30px_rgb(0_0_0_/_25%)] backdrop-blur-md outline-none transition-colors hover:border-[var(--narez-metal)] hover:text-[var(--narez-metal)] focus-visible:ring-2 focus-visible:ring-[var(--narez-metal)] focus-visible:ring-offset-4 focus-visible:ring-offset-neutral-950"
+    data-menu-toggle
+    aria-controls="site-menu"
+    aria-expanded="false"
+    aria-label="Abrir menu"
+  >
+    <span class="header-menu-bars flex w-9 flex-col gap-[5px]" aria-hidden="true">
+      <span class="menu-bar block h-[2px] w-full bg-current"></span>
+      <span class="menu-bar block h-[2px] w-7 self-end bg-current"></span>
+      <span class="menu-bar block h-[2px] w-full bg-current"></span>
+    </span>
+    <span class="header-menu-label text-[0.6rem] font-semibold uppercase tracking-[0.28em]">Menu</span>
+  </button>
 </header>
+
+<div
+  class="menu-backdrop pointer-events-none invisible fixed inset-0 z-[55] bg-black/75 opacity-0"
+  data-menu-backdrop
+  aria-hidden="true"
+></div>
+
+<aside
+  id="site-menu"
+  class="menu-panel pointer-events-none invisible fixed inset-y-0 left-0 z-[60] flex w-[min(34rem,92vw)] overflow-hidden border-r border-neutral-800 bg-neutral-950 text-white opacity-0 max-md:w-full"
+  data-menu-panel
+  aria-hidden="true"
+>
+  <svg class="menu-strokes pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 600 1000" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M-80 170C120 40 320 70 700-80" fill="none" stroke="var(--narez-metal)" stroke-width="1.5" opacity="0.7" />
+    <path d="M-140 820C60 650 280 690 680 420" fill="none" stroke="var(--narez-paper)" stroke-width="1" opacity="0.28" />
+    <path d="M270 1060C270 820 410 650 650 580" fill="none" stroke="var(--narez-metal)" stroke-width="1" opacity="0.5" />
+    <circle cx="520" cy="170" r="92" fill="none" stroke="var(--narez-paper)" stroke-width="1" opacity="0.16" />
+    <circle cx="520" cy="170" r="5" fill="var(--narez-metal)" opacity="0.8" />
+  </svg>
+
+  <div class="menu-panel-content relative z-10 flex min-h-full w-full flex-col justify-center px-10 py-16 max-md:px-7">
+    <nav aria-label="Navegacion principal">
+      <a href="/" class="menu-item group flex items-center justify-between border-t border-neutral-800 py-5 outline-none transition-colors hover:border-[var(--narez-metal)] focus-visible:border-[var(--narez-metal)]" data-menu-item>
+        <span class="menu-item-label text-3xl font-semibold uppercase tracking-tight transition-transform duration-300 group-hover:translate-x-2">Inicio</span>
+        <svg class="h-6 w-6 text-[var(--narez-metal)] opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h13m-6-6 6 6-6 6" /></svg>
+      </a>
+      {landingData.navItems.map((item) => (
+        <a href={item.href} class="menu-item group flex items-center justify-between border-t border-neutral-800 py-5 outline-none transition-colors hover:border-[var(--narez-metal)] focus-visible:border-[var(--narez-metal)]" data-menu-item>
+          <span class="menu-item-label text-3xl font-semibold uppercase tracking-tight transition-transform duration-300 group-hover:translate-x-2">{item.label}</span>
+          <svg class="h-6 w-6 text-[var(--narez-metal)] opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h13m-6-6 6 6-6 6" /></svg>
+        </a>
+      ))}
+      <a href="#contacto" class="menu-item group flex items-center justify-between border-y border-neutral-800 py-5 outline-none transition-colors hover:border-[var(--narez-metal)] focus-visible:border-[var(--narez-metal)]" data-menu-item>
+        <span class="menu-item-label text-3xl font-semibold uppercase tracking-tight transition-transform duration-300 group-hover:translate-x-2">Contacto</span>
+        <svg class="h-6 w-6 text-[var(--narez-metal)] opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h13m-6-6 6 6-6 6" /></svg>
+      </a>
+    </nav>
+  </div>
+</aside>
 
 <script>
   import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-  gsap.registerPlugin(ScrollTrigger);
+  const toggle = document.querySelector<HTMLElement>("[data-menu-toggle]");
+  const panel = document.querySelector<HTMLElement>("[data-menu-panel]");
+  const backdrop = document.querySelector<HTMLElement>("[data-menu-backdrop]");
+  const bars = toggle?.querySelectorAll<HTMLElement>(".menu-bar");
+  const menuItems = panel?.querySelectorAll<HTMLElement>("[data-menu-item]");
+  const panelContent = panel?.querySelector<HTMLElement>(".menu-panel-content");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isMobile = window.matchMedia("(max-width: 767px)").matches;
+  const duration = (value: number) => (reduceMotion ? 0 : value);
+  const browserScale = () => Number(getComputedStyle(document.documentElement).getPropertyValue("--narez-zoom-scale") || 1);
+  const scaled = (value: number) => value * browserScale();
 
-  // Animación de entrada inicial
-  const tl = gsap.timeline();
-  tl.from(".header-logo", { y: -20, autoAlpha: 0, duration: 0.8, ease: "power3.out", delay: 0.2 })
-    .from(".header-links a", { y: -20, autoAlpha: 0, duration: 0.6, stagger: 0.1, ease: "power3.out" }, "-=0.6")
-    .from(".header-cta", { y: -20, autoAlpha: 0, duration: 0.4 }, "-=0.4");
+  if (toggle && panel && backdrop && bars && menuItems && panelContent) {
+    let isOpen = false;
+    let previousBodyOverflow = "";
+    let previousFocus: HTMLElement | null = null;
 
-  // Ocultar/Mostrar el header al hacer scroll (Advanced Reveal)
-  const showAnim = gsap.from("#main-header", { 
-    yPercent: -100,
-    paused: true,
-    duration: 0.3,
-    ease: "power2.inOut"
-  }).progress(1);
+    gsap.set(panel, { xPercent: -100, autoAlpha: 0 });
+    gsap.set(backdrop, { autoAlpha: 0 });
+    gsap.set(panelContent, { x: scaled(-24), autoAlpha: 0 });
+    gsap.set(menuItems, { x: scaled(-28), autoAlpha: 0 });
 
-  ScrollTrigger.create({
-    start: "top top",
-    end: "max",
-    onUpdate: (self) => {
-      // Si el usuario hace scroll hacia abajo, ocultamos. Si sube, mostramos.
-      if (self.direction === -1 || self.progress === 0) {
-        showAnim.play();
+    const setMenuState = (open: boolean) => {
+      isOpen = open;
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Cerrar menu" : "Abrir menu");
+      panel.setAttribute("aria-hidden", String(!open));
+      backdrop.setAttribute("aria-hidden", String(!open));
+      document.documentElement.classList.toggle("menu-is-open", open);
+
+      if (open) {
+        previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+        previousBodyOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        panel.classList.remove("pointer-events-none", "invisible");
+        backdrop.classList.remove("pointer-events-none", "invisible");
+        toggle.focus({ preventScroll: true });
       } else {
-        showAnim.reverse();
+        document.body.style.overflow = previousBodyOverflow;
+        previousFocus?.focus({ preventScroll: true });
       }
-    }
-  });
+    };
+
+    const openMenu = () => {
+      if (isOpen) return;
+      setMenuState(true);
+
+      const toggleY = isMobile ? 0 : -(window.innerHeight / 2 - scaled(56));
+      const timeline = gsap.timeline({ defaults: { ease: "power2.out" } });
+      timeline
+        .to(backdrop, { autoAlpha: 1, duration: duration(0.18) }, 0)
+        .to(panel, { xPercent: 0, autoAlpha: 1, duration: duration(0.45), ease: "power3.out" }, 0)
+        .to(panelContent, { x: 0, autoAlpha: 1, duration: duration(0.28) }, 0.04)
+        .to(menuItems, { x: 0, autoAlpha: 1, duration: duration(0.24), stagger: reduceMotion ? 0 : 0.04 }, 0.08)
+        .to(toggle, { y: toggleY, duration: duration(0.28) }, 0)
+        .to(bars[0], { rotation: 45, y: scaled(7), duration: duration(0.2) }, 0)
+        .to(bars[1], { autoAlpha: 0, x: scaled(-8), duration: duration(0.16) }, 0)
+        .to(bars[2], { rotation: -45, y: scaled(-7), duration: duration(0.2) }, 0);
+    };
+
+    const closeMenu = () => {
+      if (!isOpen) return;
+      setMenuState(false);
+
+      const timeline = gsap.timeline({
+        defaults: { ease: "power2.inOut" },
+        onComplete: () => {
+          panel.classList.add("pointer-events-none", "invisible");
+          backdrop.classList.add("pointer-events-none", "invisible");
+          gsap.set(panel, { autoAlpha: 0 });
+          gsap.set(backdrop, { autoAlpha: 0 });
+          gsap.set(panelContent, { x: scaled(-24), autoAlpha: 0 });
+          gsap.set(menuItems, { x: scaled(-28), autoAlpha: 0 });
+        },
+      });
+      timeline
+        .to([menuItems, panelContent], { x: scaled(-18), autoAlpha: 0, duration: duration(0.18), stagger: reduceMotion ? 0 : 0.015 }, 0)
+        .to(panel, { xPercent: -100, duration: duration(0.36), ease: "power2.in" }, 0)
+        .to(backdrop, { autoAlpha: 0, duration: duration(0.2) }, 0)
+        .to(toggle, { y: 0, duration: duration(0.22) }, 0)
+        .to(bars[0], { rotation: 0, y: 0, duration: duration(0.18) }, 0)
+        .to(bars[1], { autoAlpha: 1, x: 0, duration: duration(0.14) }, 0)
+        .to(bars[2], { rotation: 0, y: 0, duration: duration(0.18) }, 0);
+    };
+
+    toggle.addEventListener("click", () => (isOpen ? closeMenu() : openMenu()));
+    backdrop.addEventListener("click", closeMenu);
+    panel.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
+  }
 </script>
 
+<style>
+  @media (min-width: 768px) {
+    .header-menu-toggle {
+      width: calc(7.75rem * var(--narez-browser-scale, 1));
+      height: calc(5rem * var(--narez-browser-scale, 1));
+      gap: calc(0.5rem * var(--narez-browser-scale, 1));
+      border-top-right-radius: calc(2.5rem * var(--narez-browser-scale, 1));
+      border-bottom-right-radius: calc(2.5rem * var(--narez-browser-scale, 1));
+    }
 
+    .header-menu-bars {
+      width: calc(2.25rem * var(--narez-browser-scale, 1));
+      gap: calc(0.3125rem * var(--narez-browser-scale, 1));
+    }
 
+    .header-menu-bars .menu-bar {
+      height: calc(2px * var(--narez-browser-scale, 1));
+    }
+
+    .header-menu-bars .menu-bar:nth-child(2) {
+      width: calc(1.75rem * var(--narez-browser-scale, 1));
+    }
+
+    .header-menu-label {
+      font-size: calc(0.6rem * var(--narez-browser-scale, 1));
+    }
+
+    .menu-panel {
+      width: min(calc(34rem * var(--narez-browser-scale, 1)), 92vw);
+    }
+
+    .menu-panel-content {
+      padding: calc(4rem * var(--narez-browser-scale, 1)) calc(2.5rem * var(--narez-browser-scale, 1));
+    }
+
+    .menu-item {
+      padding-top: calc(1.25rem * var(--narez-browser-scale, 1));
+      padding-bottom: calc(1.25rem * var(--narez-browser-scale, 1));
+    }
+
+    .menu-item-label {
+      font-size: calc(1.875rem * var(--narez-browser-scale, 1));
+    }
+
+    .menu-item > svg {
+      width: calc(1.5rem * var(--narez-browser-scale, 1));
+      height: calc(1.5rem * var(--narez-browser-scale, 1));
+    }
+  }
+</style>

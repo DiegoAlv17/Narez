@@ -11,8 +11,8 @@ export interface ProcessStep {
 
 export const landingData = {
   hero: {
-    title: "Potencia tu negocio con Soluciones Digitales",
-    highlight: "a medida",
+    title: "Tecnologia con Criterio Humano",
+    highlight: "",
     description: "En Narez transformamos tus ideas en realidad. Desde landing pages de alto impacto hasta CRMs, ERPs y automatizaciones con Inteligencia artificial.",
     primaryCta: "Agenda tu consulta",
     secondaryCta: "Ver servicios"
@@ -51,7 +51,6 @@ export const landingData = {
   navItems: [
     { label: "Servicios", href: "#servicios" },
     { label: "Proceso", href: "#proceso" },
-    { label: "Beneficios", href: "#beneficios" }
   ] as NavItem[],
   processSteps: [
     {

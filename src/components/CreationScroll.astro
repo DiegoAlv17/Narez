@@ -1,0 +1,191 @@
+---
+import ContactContent from './ContactContent.astro';
+import FinalePattern from './FinalePattern.astro';
+---
+
+<div class="creation-scroll-scene pointer-events-none fixed inset-0 z-[40] overflow-hidden" data-creation-scene aria-hidden="true">
+  <div class="creation-blackout absolute inset-0 z-0 bg-neutral-950" data-creation-blackout></div>
+
+  <div class="creation-figure" data-creation-figure>
+    <div class="creation-hand creation-hand--robot" data-creation-robot>
+      <img src="/mano-robot.svg" alt="" class="creation-hand-image" draggable="false" />
+    </div>
+    <div class="creation-hand creation-hand--human" data-creation-human>
+      <img src="/mano-humano.svg" alt="" class="creation-hand-image" draggable="false" />
+    </div>
+    <span class="creation-touch-point" data-creation-touch></span>
+  </div>
+
+  <div
+    class="creation-final-preview absolute inset-0 z-[2] bg-[var(--narez-paper)] text-[var(--narez-ink)]"
+    data-creation-preview
+    style="--contact-muted: #4a4a4a; --contact-action-bg: var(--narez-ink); --contact-action-ink: var(--narez-paper);"
+  >
+    <div class="absolute inset-x-0 top-0" data-creation-preview-pattern>
+      <FinalePattern />
+    </div>
+    <section class="relative z-10 flex h-[100svh] items-center py-32">
+      <ContactContent preview />
+    </section>
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const scene = document.querySelector<HTMLElement>("[data-creation-scene]");
+  const blackout = document.querySelector<HTMLElement>("[data-creation-blackout]");
+  const robot = document.querySelector<HTMLElement>("[data-creation-robot]");
+  const human = document.querySelector<HTMLElement>("[data-creation-human]");
+  const touch = document.querySelector<HTMLElement>("[data-creation-touch]");
+  const preview = document.querySelector<HTMLElement>("[data-creation-preview]");
+  const previewPattern = document.querySelector<HTMLElement>("[data-creation-preview-pattern]");
+  const services = document.querySelector<HTMLElement>("#servicios");
+  const contact = document.querySelector<HTMLElement>("#contacto");
+  const finale = document.querySelector<HTMLElement>(".finale");
+
+  if (scene && blackout && robot && human && touch && preview && previewPattern && services && contact && finale) {
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      let active = true;
+      const syncPreviewHeight = () => {
+        previewPattern.style.height = `${finale.offsetHeight}px`;
+      };
+
+      syncPreviewHeight();
+      gsap.set(scene, { autoAlpha: 0 });
+      gsap.set(blackout, { autoAlpha: 0 });
+      gsap.set([robot, human], { transformOrigin: "50% 50%" });
+      gsap.set(touch, { autoAlpha: 0, scale: 0.55 });
+      gsap.set(preview, {
+        clipPath: "circle(0vmax at 50% 50%)",
+        webkitClipPath: "circle(0vmax at 50% 50%)",
+      });
+
+      const scrollAnimation = gsap.timeline({
+        defaults: { ease: "none" },
+        scrollTrigger: {
+          trigger: services,
+          start: "top top",
+          endTrigger: contact,
+          end: "top top",
+          scrub: 0.75,
+          invalidateOnRefresh: true,
+          refreshPriority: 1,
+          onRefresh: syncPreviewHeight,
+        },
+      });
+
+      scrollAnimation
+        .to(scene, { autoAlpha: 1, duration: 0.01 }, 0)
+        .fromTo(
+          robot,
+          { xPercent: -42, yPercent: 30, rotation: -8 },
+          { xPercent: 1.5, yPercent: 0, rotation: 0, duration: 0.8 },
+          0,
+        )
+        .fromTo(
+          human,
+          { xPercent: 42, yPercent: -30, rotation: 8 },
+          { xPercent: -8.5, yPercent: 0, rotation: 0, duration: 0.8 },
+          0,
+        )
+        .to(blackout, { autoAlpha: 1, duration: 0.035 }, 0.755)
+        .to(touch, { autoAlpha: 0.9, scale: 1, duration: 0.045 }, 0.765)
+        .to(
+          preview,
+          {
+            clipPath: "circle(75vmax at 50% 50%)",
+            webkitClipPath: "circle(75vmax at 50% 50%)",
+            duration: 0.205,
+          },
+          0.79,
+        )
+        .to(touch, { autoAlpha: 0, duration: 0.06 }, 0.82)
+        .to(scene, { autoAlpha: 0, duration: 0.005 }, 0.995);
+
+      requestAnimationFrame(() => ScrollTrigger.refresh(true));
+      document.fonts?.ready.then(() => {
+        if (active) ScrollTrigger.refresh(true);
+      });
+
+      return () => {
+        active = false;
+        scrollAnimation.kill();
+      };
+    });
+  }
+</script>
+
+<style>
+  .creation-scroll-scene {
+    visibility: hidden;
+    opacity: 0;
+    contain: paint;
+  }
+
+  .creation-blackout {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .creation-figure {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: min(94vw, 72rem);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  .creation-hand {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+  }
+
+  .creation-hand-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: screen;
+    user-select: none;
+  }
+
+  .creation-touch-point {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--narez-paper);
+    box-shadow: 0 0 1.15rem 0.45rem rgb(245 245 243 / 28%);
+    transform: translate(-50%, -50%);
+  }
+
+  .creation-final-preview {
+    clip-path: circle(0vmax at 50% 50%);
+    -webkit-clip-path: circle(0vmax at 50% 50%);
+    will-change: clip-path;
+  }
+
+  @media (max-width: 767px) {
+    .creation-figure {
+      width: 132vw;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .creation-scroll-scene {
+      display: none;
+    }
+  }
+</style>
