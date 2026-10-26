@@ -1,5 +1,6 @@
 ---
 import { landingData } from '../data/landing';
+import { siteConfig } from '../config/site';
 
 interface Props {
   preview?: boolean;
@@ -27,7 +28,7 @@ const actionClass = "group flex items-center justify-between bg-[var(--contact-a
         </div>
       ) : (
         <a
-          href="https://wa.me/51907896723"
+          href={siteConfig.contact.whatsappUrl}
           class={`${actionClass} hover:opacity-80 focus-visible:ring-2 focus-visible:ring-[var(--narez-metal)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--narez-paper)]`}
         >
           <span class="uppercase tracking-widest">{landingData.cta.buttonText}</span>

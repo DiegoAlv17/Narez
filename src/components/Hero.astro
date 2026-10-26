@@ -1,3 +1,7 @@
+---
+import { landingData } from '../data/landing';
+---
+
 <section class="hero-section relative h-[100svh] min-h-0 overflow-hidden bg-neutral-950 pb-16 pt-32 text-white max-md:min-h-[620px]">
   <a href="/" class="hero-brand group absolute left-32 top-10 z-20 flex items-center gap-4 outline-none focus-visible:ring-2 focus-visible:ring-[var(--narez-metal)] focus-visible:ring-offset-4 focus-visible:ring-offset-neutral-950 max-md:left-36 max-md:top-5 max-md:gap-3" aria-label="Inicio Narez">
     <img src="/logo.svg" alt="Logo de Narez" class="hero-brand-logo w-auto invert transition-transform duration-300 group-hover:scale-105 max-md:h-11" />
@@ -40,13 +44,17 @@
   <div class="hero-shell relative z-10 mx-auto flex h-full w-full max-w-360 items-center px-8 lg:pl-32">
     <div class="hero-copy w-full max-w-275">
       <h1 class="hero-heading mx-auto max-w-245 text-center text-[6.75rem] font-bold uppercase leading-[0.88] tracking-[-0.075em] max-md:text-4xl">
-        <span class="block opacity-0 translate-y-8 animate-[fade-in-up_0.8s_0.15s_forwards]">Tecnologia con</span>
+        <span class="block opacity-0 translate-y-8 animate-[fade-in-up_0.8s_0.15s_forwards]">{landingData.hero.title}</span>
         <span class="hero-heading-accent mt-3 block italic text-(--narez-metal) opacity-0 translate-y-8 animate-[fade-in-up_0.8s_0.35s_forwards] max-md:mt-2">
-          Criterio Humano
+          {landingData.hero.highlight}
         </span>
       </h1>
 
-      <div class="hero-actions mt-12 flex items-center justify-center gap-12 opacity-0 translate-y-8 animate-[fade-in-up_0.8s_0.75s_forwards] max-md:mt-9 max-md:flex-col max-md:gap-7">
+      <p class="hero-description mx-auto mt-8 max-w-3xl text-center text-lg leading-relaxed text-neutral-300 opacity-0 translate-y-8 animate-[fade-in-up_0.8s_0.55s_forwards] max-md:mt-6 max-md:text-base">
+        {landingData.hero.description}
+      </p>
+
+      <div class="hero-actions mt-10 flex items-center justify-center gap-12 opacity-0 translate-y-8 animate-[fade-in-up_0.8s_0.75s_forwards] max-md:mt-8 max-md:flex-col max-md:gap-7">
         <a href="#contacto" class="hero-contact group inline-flex items-center gap-4 text-white outline-none focus-visible:ring-2 focus-visible:ring-(--narez-metal) focus-visible:ring-offset-4 focus-visible:ring-offset-neutral-950" aria-label="Contáctanos">
           <span class="narez-display text-5xl italic leading-none transition-colors duration-300 group-hover:text-(--narez-metal) max-md:text-4xl">Contáctanos.</span>
           <svg class="h-8 w-8 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h17m-6-6 6 6-6 6" /></svg>
@@ -223,3 +231,9 @@
     }
   }
 </style>
+import { landingData } from '../data/landing';
+
+---
+import { landingData } from '../data/landing';
+
+---

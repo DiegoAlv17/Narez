@@ -11,9 +11,9 @@ export interface ProcessStep {
 
 export const landingData = {
   hero: {
-    title: "Tecnologia con Criterio Humano",
-    highlight: "",
-    description: "En Narez transformamos tus ideas en realidad. Desde landing pages de alto impacto hasta CRMs, ERPs y automatizaciones con Inteligencia artificial.",
+    title: "Soluciones digitales",
+    highlight: "con IA",
+    description: "Diseñamos landing pages, CRM, ERP y automatizaciones con IA para empresas en Perú y proyectos internacionales.",
     primaryCta: "Agenda tu consulta",
     secondaryCta: "Ver servicios"
   },
