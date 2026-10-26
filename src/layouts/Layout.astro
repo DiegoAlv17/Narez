@@ -1,12 +1,59 @@
 ﻿---
 import '../styles/global.css';
+import { siteConfig } from '../config/site';
 
 interface Props {
-title: string;
-description?: string;
+  title: string;
+  description?: string;
 }
 
-const { title, description = "Soluciones digitales Narez" } = Astro.props;
+const { title, description = siteConfig.description } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, siteConfig.url).toString();
+const ogImageUrl = new URL("/og-image.png", siteConfig.url).toString();
+const organizationId = `${siteConfig.url}#organization`;
+const websiteId = `${siteConfig.url}#website`;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": organizationId,
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: new URL(siteConfig.logo, siteConfig.url).toString(),
+      description: siteConfig.description,
+      areaServed: {
+        "@type": "Country",
+        name: siteConfig.areaServed,
+      },
+      serviceType: [
+        "Soluciones digitales con inteligencia artificial",
+        "Landing pages y sitios web",
+        "Sistemas CRM y ERP",
+        "Automatización de procesos",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: siteConfig.phone,
+        contactType: "sales",
+        areaServed: "PE",
+        availableLanguage: ["Spanish"],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": websiteId,
+      url: siteConfig.url,
+      name: siteConfig.name,
+      description: siteConfig.description,
+      inLanguage: "es-PE",
+      publisher: {
+        "@id": organizationId,
+      },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -15,12 +62,27 @@ const { title, description = "Soluciones digitales Narez" } = Astro.props;
 <meta charset="UTF-8" />
 <meta name="description" content={description} />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={canonicalUrl} />
+<link rel="icon" type="image/svg+xml" href={siteConfig.logo} />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_PE" />
+<meta property="og:site_name" content={siteConfig.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:alt" content="Soluciones digitales con IA de Narez" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
 <script is:inline>
   (() => {
     const root = document.documentElement;

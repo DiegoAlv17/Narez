@@ -1,0 +1,69 @@
+# Repository Guidelines
+
+## Project Structure & Module Organization
+
+This repository is a single-page Astro landing site. The page entry point is `src/pages/index.astro`, which composes reusable sections from `src/components/` and the document shell from `src/layouts/Layout.astro`. Keep editable copy, navigation, and process data in `src/data/landing.ts`; site metadata belongs in `src/config/site.ts`. Global Tailwind imports, fonts, design tokens, and shared utilities live in `src/styles/global.css`. Use `src/assets/` for source SVGs and `public/` for files served directly, such as logos and images. Generated output in `dist/` is not source code.
+
+## Build, Test, and Development Commands
+
+Run commands from the repository root with the pinned pnpm toolchain.
+
+- `pnpm install` — install the locked dependencies.
+- `pnpm dev` — start Astro’s local development server at `http://localhost:4321`.
+- `pnpm build` — create the production site in `dist/`; run this before opening a PR.
+- `pnpm preview` — serve the built site locally for final inspection.
+- `pnpm astro <command>` — invoke the Astro CLI for project-specific tasks.
+
+There is currently no automated test runner. Treat a successful build, responsive browser review, working anchors/forms, and a check for console errors as the baseline validation.
+
+## Coding Style & Naming Conventions
+
+Use two-space indentation, semicolons in TypeScript, and single quotes for imports in Astro files, matching the existing code. Name Astro components in PascalCase (`ContactContent.astro`), TypeScript variables and object properties in camelCase, and exported types in PascalCase. Prefer Tailwind utility classes for component styling; keep reusable tokens and global behavior in `global.css`. Keep animation code near the component it animates, use GSAP’s reduced-motion path, and clean up observers/timelines when necessary.
+
+## Established Product and Animation Decisions
+
+The following behavior is intentional and must be preserved unless the user explicitly requests a redesign.
+
+### Desktop Zoom and Responsive Sizing
+
+- Desktop content must keep the same physical size when browser zoom changes, including the supported 20% to 200% range. Browser zoom must not enlarge or shrink typography, spacing, the hero, or the menu.
+- `src/layouts/Layout.astro` derives `--narez-zoom-scale` from the inverse of `window.devicePixelRatio`. `src/styles/global.css` applies that scale to the desktop root font size so all `rem`-based Tailwind typography and spacing participate in the compensation.
+- Keep `--narez-browser-scale` at `1` for the component CSS rules that already use it. GSAP pixel offsets in `Header.astro` and `Hero.astro` read `--narez-zoom-scale` directly.
+- Apply zoom compensation only at the desktop breakpoint (`min-width: 768px`). Mobile must use its normal responsive scale and layout. Do not remove the zoom code as an accessibility cleanup or replace it with ordinary responsive resizing; zoom invariance is a product requirement for this landing page.
+
+### Hand Animation and Scroll Sequence
+
+- `CreationScroll.astro` is a fixed, pointer-events-free overlay placed immediately after `Hero.astro` in `index.astro`; it must not create additional document height.
+- The hand animation begins when `#servicios` reaches the top of the viewport, immediately after scrolling past the hero. It continues across the services and process sections and ends when `#contacto` reaches the top.
+- Keep the hand scene above page content but below the menu. The menu must remain visible and usable throughout the transition.
+- Near finger contact, the blackout layer must cover the underlying process content completely. No section border, divider, SVG line, or lower-page content may remain visible outside the expanding circle.
+- The reduced-motion path must skip the decorative fixed scene and expose the normal document content directly.
+
+### Circular Reveal and Contact Handoff
+
+- The white reveal must use an animated full-viewport `clip-path: circle()` (and the WebKit equivalent). Do not restore the previous technique of scaling a small circular `div`; large `transform: scale()` values rasterize the edge and make it visibly pixelated.
+- The reveal contains a non-interactive preview of the real contact content and final SVG pattern. Text, CTA artwork, and pattern lines must appear as the circle opens; there must never be a fully white waiting interval before the next content appears.
+- `ContactContent.astro` is the single source for both the preview and the interactive contact section. The preview renders a non-focusable CTA representation, while `CTA.astro` renders the real WhatsApp link.
+- `FinalePattern.astro` is shared by the transition preview and the final page. Keep the preview pattern height synchronized with the real `.finale` height so the handoff does not visibly shift.
+- The overlay becomes transparent only when the real `#contacto` section has reached its final viewport position. Forward and reverse scrolling must remain seamless and must not flash black or white.
+
+### Contact and Footer Visual Continuity
+
+- `Finale.astro` owns one continuous paper-colored canvas and one `FinalePattern` behind both `CTA.astro` and `Footer.astro`.
+- Do not add separate contact/footer SVG backgrounds or a border at their junction. Pattern paths must continue harmoniously across the contact-to-footer boundary without restarting.
+- Keep the finale pattern accents static unless a new animation is proven not to cause repaint flicker. Avoid animated SVG filters, blur, or drop-shadow effects across the large final canvas.
+
+### Interaction, Accessibility, and Performance
+
+- Service cards that visually say “Explorar” are real links to `#contacto`; do not turn them back into non-interactive, pointer-styled containers.
+- Every internal hash link must resolve to an existing section. Placeholder legal items remain non-links until real destinations exist so they cannot jump the page to the top.
+- Decorative preview content must remain excluded from interaction and accessibility navigation. Preserve focus-visible styles on real actions.
+- Infinite hero GSAP timelines must pause when the hero is outside the viewport. Preserve `IntersectionObserver` cleanup, GSAP timeline cleanup, `gsap.matchMedia()` reduced-motion handling, and safe `ScrollTrigger.refresh()` calls after layout/font changes.
+
+## Testing Guidelines
+
+No coverage threshold or test naming convention is configured. For UI changes, manually test desktop and mobile layouts, keyboard focus states, reduced-motion behavior, and all navigation targets. For animation or sizing changes, also verify the hero-to-hands start point, the partial circular edge, immediate contact content inside the circle, the exact preview-to-contact handoff, contact/footer pattern continuity, and desktop zoom invariance at 20%, 100%, and 200%. Include screenshots or a preview URL when visual behavior changes.
+
+## Commit & Pull Request Guidelines
+
+History uses short imperative-style messages in both Spanish and English (for example, `Ajustes en el logo` and `docs: ...`). Write concise messages that describe one change. Pull requests should explain the user-visible impact, list validation commands, link the relevant issue or task, and include before/after screenshots for visual changes. Do not commit secrets, local environment files, or generated `dist/` output.
