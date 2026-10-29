@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1630" viewBox="0 0 1920 1630" role="img" aria-labelledby="title desc">
+  <title id="title">Tres opciones de tarjetas de contacto Narez</title>
+  <desc id="desc">Muestrario vectorial de tres conceptos, con el símbolo oficial de Narez reutilizado desde public/logo.svg.</desc>
+  <defs>
+    <symbol id="narez-mark" viewBox="0 0 1514 887"><path d="M226.184 1.79621C147.476 7.5114 76.6793 51.2734 35.4997 120.019C21.9084 142.553 16.4313 154.637 9.93991 176.681C0 209.339 0.202855 206.237 0 556.332V885.037H46.6567H93.3134V617.566C93.3134 441.049 94.1248 346.667 95.5448 339.645C101.225 310.906 127.393 287.066 161.067 279.881C174.861 276.942 199.204 276.942 214.012 280.044C227.806 282.983 256.003 293.434 268.58 300.129C273.043 302.741 353.171 348.136 446.282 401.043C539.392 454.112 673.277 530.206 743.464 570.049C813.855 610.055 904.126 661.492 944.291 684.352C984.456 707.213 1052.01 745.75 1094.4 769.754C1136.8 793.921 1179.2 818.251 1188.73 823.803C1281.23 878.505 1369.88 879.975 1435.4 828.375C1471.92 799.309 1494.03 763.222 1508.63 708.683C1512.08 695.62 1512.29 676.025 1512.89 347.32L1513.3 1.14441e-05H1466.64H1419.99L1419.78 73.8075C1419.78 114.467 1419.78 224.852 1419.99 319.234C1419.99 426.679 1419.38 494.282 1417.96 500.487C1413.29 523.674 1392.8 545.555 1366.03 556.169C1347.57 563.517 1331.74 564.987 1309.84 561.068C1279.41 555.516 1272.11 551.924 1129.9 469.462C1091.97 447.417 738.393 243.14 700.865 221.586C693.156 217.014 670.639 204.114 651.165 192.683C472.653 88.8303 365.951 27.7595 352.157 22.0443C313.614 5.7152 270 -1.30632 226.184 1.79621Z" fill="currentColor"/><path d="M473.667 1.95947C548.926 11.4304 603.9 25.1468 670.639 51.2733C781.601 94.872 860.309 148.268 949.565 240.364C1003.12 295.393 1038.62 328.215 1083.86 363.486C1151.2 416.229 1207.19 442.519 1264.4 448.07L1273.93 449.05V224.525V-1.71661e-05L867.815 0.163274C607.551 0.326565 465.958 0.979729 473.667 1.95947Z" fill="currentColor"/><path d="M243.426 647.449V886.67H674.899C912.037 886.67 1105.76 886.18 1104.95 885.69C1104.34 885.2 1096.64 884.057 1087.91 883.241C1032.53 877.689 958.288 858.421 895.606 833.274C786.064 789.185 696.199 729.747 605.726 641.734C521.135 559.435 495.981 536.248 457.439 505.222C401.653 460.154 363.719 437.62 315.846 420.964C296.371 414.106 266.957 408.227 252.149 408.227H243.426V647.449Z" fill="currentColor"/></symbol>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#13171a" flood-opacity=".13"/>
+    </filter>
+    <clipPath id="clip-a-front"><rect x="440" y="300" width="660" height="366" rx="12"/></clipPath>
+    <clipPath id="clip-a-back"><rect x="1150" y="300" width="660" height="366" rx="12"/></clipPath>
+    <clipPath id="clip-b-front"><rect x="440" y="720" width="660" height="366" rx="12"/></clipPath>
+    <clipPath id="clip-b-back"><rect x="1150" y="720" width="660" height="366" rx="12"/></clipPath>
+    <clipPath id="clip-c-front"><rect x="440" y="1140" width="660" height="366" rx="12"/></clipPath>
+    <clipPath id="clip-c-back"><rect x="1150" y="1140" width="660" height="366" rx="12"/></clipPath>
+    <style>
+      text { font-family: 'Space Grotesk', Arial, sans-serif; }
+      .eyebrow { font-size: 18px; font-weight: 600; letter-spacing: 3px; }
+      .label { font-size: 15px; font-weight: 600; letter-spacing: 2px; }
+      .value { font-size: 23px; font-weight: 500; }
+      .wordmark { font-size: 31px; font-weight: 700; letter-spacing: 8px; }
+      .tagline { font-size: 15px; font-weight: 500; letter-spacing: 1.2px; }
+      .muted { fill: #68747c; }
+    </style>
+  </defs>
+  <rect width="1920" height="1630" fill="#eeece8"/>
+  <text x="100" y="100" fill="#0a0a0a" font-size="16" font-weight="600" letter-spacing="4">NAREZ / IDENTIDAD EN PAPEL</text>
+  <text x="100" y="156" fill="#0a0a0a" font-size="38" font-weight="700" letter-spacing="1">TARJETAS DE CONTACTO</text>
+  <text x="1818" y="150" text-anchor="end" fill="#66747e" font-size="17" letter-spacing="1">TRES RUTAS · 90 × 50 MM</text>
+  <line x1="100" y1="204" x2="1820" y2="204" stroke="#c8c7c2" stroke-width="1"/>
+
+  <!-- Opción 01: Noche -->
+  <text x="100" y="359" fill="#496578" class="eyebrow">01</text>
+  <text x="100" y="397" fill="#0a0a0a" font-size="24" font-weight="700" letter-spacing="2">NOCHE</text>
+  <text x="100" y="428" fill="#626b70" font-size="16">Contraste y presencia</text>
+  <text x="440" y="285" fill="#727a7d" class="label">FRENTE</text>
+  <text x="1150" y="285" fill="#727a7d" class="label">REVERSO</text>
+  <g filter="url(#shadow)">
+    <rect x="440" y="300" width="660" height="366" rx="12" fill="#0a0a0a"/>
+    <g clip-path="url(#clip-a-front)" fill="none" stroke="#496578">
+      <circle cx="1060" cy="320" r="300" stroke-width="2" opacity=".76"/>
+      <circle cx="1060" cy="320" r="246" stroke-width="1" opacity=".38"/>
+      <circle cx="1058" cy="440" r="5" fill="#496578" stroke="none"/>
+    </g>
+    <use href="#narez-mark" x="490" y="423" width="102" height="60" style="color:#f5f5f3"/>
+    <text x="616" y="462" fill="#f5f5f3" class="wordmark">NAREZ</text>
+    <text x="490" y="521" fill="#b9c3c8" class="tagline">SOLUCIONES DIGITALES CON IA</text>
+    <rect x="1150" y="300" width="660" height="366" rx="12" fill="#f5f5f3"/>
+    <use href="#narez-mark" x="1190" y="326" width="56" height="33" style="color:#0a0a0a"/>
+    <text x="1263" y="353" fill="#0a0a0a" font-size="20" font-weight="700" letter-spacing="5">NAREZ</text>
+    <line x1="1190" y1="375" x2="1770" y2="375" stroke="#c8c9c5" stroke-width="1"/>
+    <text x="1190" y="417" fill="#496578" class="label">WEB</text>
+    <text x="1320" y="417" fill="#0a0a0a" class="value">narez.pe</text>
+    <text x="1190" y="466" fill="#496578" class="label">WHATSAPP</text>
+    <text x="1320" y="466" fill="#0a0a0a" class="value">+51 907 896 723</text>
+    <text x="1190" y="515" fill="#496578" class="label">INSTAGRAM</text>
+    <text x="1320" y="515" fill="#0a0a0a" class="value">@narez.pe</text>
+    <text x="1190" y="624" fill="#727a7d" font-size="14" letter-spacing="2">SOLUCIONES DIGITALES CON IA</text>
+  </g>
+
+  <!-- Opción 02: Papel -->
+  <text x="100" y="779" fill="#496578" class="eyebrow">02</text>
+  <text x="100" y="817" fill="#0a0a0a" font-size="24" font-weight="700" letter-spacing="2">PAPEL</text>
+  <text x="100" y="848" fill="#626b70" font-size="16">Limpia y cercana</text>
+  <text x="440" y="705" fill="#727a7d" class="label">FRENTE</text>
+  <text x="1150" y="705" fill="#727a7d" class="label">REVERSO</text>
+  <g filter="url(#shadow)">
+    <rect x="440" y="720" width="660" height="366" rx="12" fill="#f5f5f3"/>
+    <g clip-path="url(#clip-b-front)" fill="none" stroke="#496578">
+      <path d="M 1015 720 C 1020 840 1048 962 1100 1024" stroke-width="2" opacity=".7"/>
+      <circle cx="1014" cy="875" r="5" fill="#496578" stroke="none"/>
+    </g>
+    <use href="#narez-mark" x="690" y="800" width="160" height="94" style="color:#0a0a0a"/>
+    <text x="770" y="932" text-anchor="middle" fill="#0a0a0a" font-size="36" font-weight="700" letter-spacing="10">NAREZ</text>
+    <text x="770" y="970" text-anchor="middle" fill="#496578" class="tagline">SOLUCIONES DIGITALES CON IA</text>
+    <rect x="1150" y="720" width="660" height="366" rx="12" fill="#0a0a0a"/>
+    <use href="#narez-mark" x="1190" y="751" width="58" height="34" style="color:#f5f5f3"/>
+    <text x="1264" y="779" fill="#f5f5f3" font-size="20" font-weight="700" letter-spacing="5">NAREZ</text>
+    <text x="1190" y="826" fill="#aebbc2" class="tagline">SOLUCIONES DIGITALES CON IA</text>
+    <line x1="1190" y1="850" x2="1770" y2="850" stroke="#496578" stroke-width="2"/>
+    <text x="1190" y="897" fill="#f5f5f3" class="value">narez.pe</text>
+    <text x="1190" y="943" fill="#f5f5f3" class="value">+51 907 896 723</text>
+    <text x="1190" y="989" fill="#f5f5f3" class="value">@narez.pe</text>
+  </g>
+
+  <!-- Opción 03: Órbita -->
+  <text x="100" y="1199" fill="#496578" class="eyebrow">03</text>
+  <text x="100" y="1237" fill="#0a0a0a" font-size="24" font-weight="700" letter-spacing="2">ÓRBITA</text>
+  <text x="100" y="1268" fill="#626b70" font-size="16">Gráfica y memorable</text>
+  <text x="440" y="1125" fill="#727a7d" class="label">FRENTE</text>
+  <text x="1150" y="1125" fill="#727a7d" class="label">REVERSO</text>
+  <g filter="url(#shadow)">
+    <rect x="440" y="1140" width="660" height="366" rx="12" fill="#f5f5f3"/>
+    <g clip-path="url(#clip-c-front)">
+      <path d="M 876 1140 H 1110 V 1506 H 777 C 850 1430 885 1340 876 1140 Z" fill="#0a0a0a"/>
+      <path d="M 780 1506 C 894 1426 1015 1308 1098 1180" fill="none" stroke="#496578" stroke-width="3"/>
+      <circle cx="947" cy="1390" r="6" fill="#496578"/>
+      <use href="#narez-mark" x="500" y="1261" width="106" height="62" style="color:#0a0a0a"/>
+      <text x="500" y="1363" fill="#0a0a0a" class="wordmark">NAREZ</text>
+      <text x="500" y="1400" fill="#496578" class="tagline">SOLUCIONES DIGITALES</text>
+    </g>
+    <rect x="1150" y="1140" width="660" height="366" rx="12" fill="#f5f5f3"/>
+    <path d="M 1600 1140 H 1810 V 1506 H 1535 C 1620 1430 1650 1315 1600 1140 Z" fill="#0a0a0a"/>
+    <path d="M 1500 1506 C 1618 1425 1720 1307 1808 1177" fill="none" stroke="#496578" stroke-width="3"/>
+    <use href="#narez-mark" x="1190" y="1167" width="55" height="32" style="color:#0a0a0a"/>
+    <text x="1262" y="1194" fill="#0a0a0a" font-size="20" font-weight="700" letter-spacing="5">NAREZ</text>
+    <line x1="1190" y1="1216" x2="1560" y2="1216" stroke="#c8c9c5" stroke-width="1"/>
+    <text x="1190" y="1260" fill="#496578" class="label">WEB</text>
+    <text x="1190" y="1293" fill="#0a0a0a" font-size="21">narez.pe</text>
+    <text x="1190" y="1342" fill="#496578" class="label">WHATSAPP</text>
+    <text x="1190" y="1375" fill="#0a0a0a" font-size="21">+51 907 896 723</text>
+    <text x="1190" y="1424" fill="#496578" class="label">INSTAGRAM</text>
+    <text x="1190" y="1457" fill="#0a0a0a" font-size="21">@narez.pe</text>
+  </g>
+
+  <text x="100" y="1582" fill="#727a7d" font-size="14" letter-spacing="1">SÍMBOLO VECTORIAL OFICIAL REUTILIZADO DESDE public/logo.svg</text>
+  <text x="1820" y="1582" text-anchor="end" fill="#727a7d" font-size="14" letter-spacing="1">PROPUESTA VISUAL · NO INCLUYE SANGRADO DE IMPRENTA</text>
+</svg>

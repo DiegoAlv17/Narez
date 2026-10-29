@@ -1,5 +1,6 @@
 ---
 import { landingData } from '../data/landing';
+const navItems = landingData.navItems.map((item) => ({ ...item, href: Astro.url.pathname === '/' ? item.href : `/${item.href}` }));
 ---
 
 <header id="main-header" class="fixed left-0 top-1/2 z-[70] -translate-y-1/2 max-md:top-4 max-md:translate-y-0">
@@ -46,7 +47,7 @@ import { landingData } from '../data/landing';
         <span class="menu-item-label text-3xl font-semibold uppercase tracking-tight transition-transform duration-300 group-hover:translate-x-2">Inicio</span>
         <svg class="h-6 w-6 text-[var(--narez-metal)] opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h13m-6-6 6 6-6 6" /></svg>
       </a>
-      {landingData.navItems.map((item) => (
+      {navItems.map((item) => (
         <a href={item.href} class="menu-item group flex items-center justify-between border-t border-neutral-800 py-5 outline-none transition-colors hover:border-[var(--narez-metal)] focus-visible:border-[var(--narez-metal)]" data-menu-item>
           <span class="menu-item-label text-3xl font-semibold uppercase tracking-tight transition-transform duration-300 group-hover:translate-x-2">{item.label}</span>
           <svg class="h-6 w-6 text-[var(--narez-metal)] opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h13m-6-6 6 6-6 6" /></svg>

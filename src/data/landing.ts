@@ -20,21 +20,25 @@ export const landingData = {
   features: [
     {
       title: "Landing Pages & Webs",
+      href: "/landing",
       description: "Presencia digital que convierte. Sitios web rápidos, responsivos y optimizados para SEO.",
       icon: "web"
     },
     {
       title: "Sistemas CRM y ERP",
+      href: "/crm-erp",
       description: "Gestiona tu empresa desde un solo lugar con sistemas dedicados que se adaptan a tus procesos.",
       icon: "system"
     },
     {
       title: "Sistemas a Medida",
+      href: "/software-a-medida",
       description: "Desarrollo de software específico para cualquier tipo de rubro o necesidad particular.",
       icon: "custom"
     },
     {
       title: "Integración con IA",
+      href: "/inteligencia-artificial",
       description: "Automatización y soluciones inteligentes para multiplicar la productividad de tu equipo.",
       icon: "ai"
     }
