@@ -62,7 +62,7 @@ const otherServices = services.filter((item) => item.slug !== service.slug);
               <span class="offer-tag">Oferta de lanzamiento</span>
               <p class="old-price">Precio base desde <del>S/ 750</del></p>
               <p class="price"><span>Desde</span> S/ 710</p>
-              <p class="price-note">Una presencia digital profesional empieza con una propuesta clara.</p>
+              <p class="price-note">Incluye un dominio .pe o .com.pe en el precio.</p>
             </div>
           ) : (
             <div class="price-block">
@@ -136,7 +136,7 @@ const otherServices = services.filter((item) => item.slug !== service.slug);
         <section id="contacto" class="service-container service-section service-contact" aria-labelledby="contact-title">
           <p class="eyebrow">El siguiente paso es tuyo</p>
           <h2 id="contact-title">{isLanding ? 'Haz que tu próxima visita se convierta en una conversación.' : 'Cuéntanos qué quieres resolver.'}</h2>
-          <p>{isLanding ? 'Hablemos de tu marca, tus clientes y tu landing desde S/ 710.' : 'Evaluamos tu caso y preparamos una oferta para lo que tu negocio necesita.'}</p>
+          <p>{isLanding ? 'Hablemos de tu marca, tus clientes y tu landing desde S/ 710, con un dominio .pe o .com.pe incluido.' : 'Evaluamos tu caso y preparamos una oferta para lo que tu negocio necesita.'}</p>
           <a class="service-button dark" href={whatsapp}>{isLanding ? 'Empezar mi landing' : 'Contactar para evaluar una oferta'} <span aria-hidden="true">↗</span></a>
           <p class="contact-channel">Conversemos por WhatsApp · {siteConfig.phone}</p>
         </section>
