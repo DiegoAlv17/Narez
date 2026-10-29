@@ -34,8 +34,8 @@ export const services: Service[] = [
       { title: 'Construimos y revisamos', description: 'Probamos el diseño responsive, los enlaces y el contacto contigo antes de publicar.' },
     ],
     faqs: [
-      { question: '¿Qué cubre el precio desde S/ 710?', answer: 'Es el precio promocional de partida para una landing de alcance base: presentación de tu negocio, servicios o beneficios y acceso a contacto. Confirmamos contigo las secciones y entregables antes de comenzar. Funciones adicionales se cotizan según su complejidad.' },
-      { question: '¿El dominio y el hosting están incluidos?', answer: 'Los requisitos de dominio, hosting y sus posibles costos se detallan en la propuesta. Si ya cuentas con ellos, evaluamos cómo aprovecharlos. No se consideran incluidos automáticamente en el precio base.' },
+      { question: '¿Qué cubre el precio desde S/ 710?', answer: 'Es el precio promocional de partida para una landing de alcance base: presentación de tu negocio, servicios o beneficios, acceso a contacto y un dominio .pe o .com.pe incluido en el precio. Confirmamos contigo las secciones y entregables antes de comenzar. Funciones adicionales se cotizan según su complejidad.' },
+      { question: '¿El dominio y el hosting están incluidos?', answer: 'La oferta incluye un dominio .pe o .com.pe en el precio. Los requisitos de hosting y sus posibles costos se detallan en la propuesta. Si ya cuentas con dominio o hosting, evaluamos cómo aprovecharlos.' },
       { question: '¿También desarrollan sitios con varias páginas?', answer: 'Sí. Si necesitas un sitio corporativo, catálogo u otras páginas, evaluamos la estructura y te presentamos una propuesta de acuerdo con el alcance.' },
       { question: '¿Qué necesitan para empezar?', answer: 'Tu logo o referencias de marca, información sobre tu negocio, servicios y datos de contacto. Si todavía estás ordenando tus contenidos, lo revisamos en la conversación inicial.' },
     ],
