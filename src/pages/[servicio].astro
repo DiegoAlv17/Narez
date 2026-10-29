@@ -1,0 +1,249 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FinalePattern from '../components/FinalePattern.astro';
+import { services, type Service } from '../data/services';
+import { siteConfig } from '../config/site';
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { servicio: service.slug },
+    props: { service },
+  }));
+}
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+const isLanding = service.slug === 'landing';
+const whatsapp = `${siteConfig.contact.whatsappUrl}?text=${encodeURIComponent(
+  isLanding
+    ? 'Hola Narez, me interesa una landing page y quisiera conocer la oferta desde S/ 710.'
+    : `Hola Narez, me interesa el servicio de ${service.name}. Quisiera evaluar una oferta para mi proyecto.`,
+)}`;
+const otherServices = services.filter((item) => item.slug !== service.slug);
+---
+
+<Layout title={`${service.name} | ${isLanding ? 'Desde S/ 710 | ' : ''}Narez`} description={service.description}>
+  <Header />
+  <main class="service-page">
+    <div class="service-dark">
+      <div class="service-pattern" aria-hidden="true"><FinalePattern /></div>
+      <nav class="service-top service-container" aria-label="Navegación del servicio">
+        <a href="/" class="service-brand" aria-label="Narez, volver al inicio">
+          <img src="/logo.svg" width="68" height="40" alt="" />
+          <span>Narez</span>
+        </a>
+        <a class="back-link" href="/#servicios">Todos los servicios <span aria-hidden="true">↗</span></a>
+      </nav>
+
+      <section class="service-hero service-container" aria-labelledby="service-title">
+        <div class="service-intro">
+          <p class="eyebrow">{service.eyebrow}</p>
+          <h1 id="service-title">{service.headline} <em>{service.accent}</em></h1>
+          <p class="service-description">{service.description}</p>
+          <div class="service-actions">
+            <a class="service-button light" href={whatsapp}>{isLanding ? 'Quiero mi landing' : 'Conversemos sobre tu proyecto'} <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#incluye">Descubre lo que hacemos <span aria-hidden="true">↓</span></a>
+          </div>
+          <ul class="outcomes" aria-label="Beneficios principales">
+            {service.outcomes.map((outcome) => <li><span aria-hidden="true">↗</span> {outcome}</li>)}
+          </ul>
+        </div>
+
+        <aside class="proposal-card" aria-label="Propuesta del servicio">
+          <div class="card-label"><span>Hecho para tu negocio</span><span aria-hidden="true">✳</span></div>
+          <p class="card-service">{service.name}</p>
+          {isLanding ? (
+            <div class="price-block">
+              <span class="offer-tag">Oferta de lanzamiento</span>
+              <p class="old-price">Precio base desde <del>S/ 750</del></p>
+              <p class="price"><span>Desde</span> S/ 710</p>
+              <p class="price-note">Una presencia digital profesional empieza con una propuesta clara.</p>
+            </div>
+          ) : (
+            <div class="price-block">
+              <span class="offer-tag">Propuesta personalizada</span>
+              <p class="quote-title">Tu proyecto merece<br />su propia propuesta.</p>
+              <p class="price-note">Contáctanos para evaluar una oferta según tus procesos, integraciones y objetivos.</p>
+            </div>
+          )}
+          <ul class="proposal-points">
+            <li>01 <span>Conversación sobre tu negocio</span></li>
+            <li>02 <span>Alcance y entregables definidos</span></li>
+            <li>03 <span>Revisión contigo antes del lanzamiento</span></li>
+          </ul>
+          <a class="service-button dark" href={whatsapp}>{isLanding ? 'Consultar la oferta' : 'Evaluar mi oferta'} <span aria-hidden="true">→</span></a>
+          <p class="scope-note">{isLanding ? 'Precio de partida para el alcance base. Confirmamos secciones, adicionales y costos de publicación en la propuesta.' : 'El precio y el plazo se definen después de evaluar el alcance. Solicita una propuesta para tu caso.'}</p>
+        </aside>
+      </section>
+    </div>
+
+    <section id="incluye" class="service-container service-section" aria-labelledby="includes-title">
+      <div class="section-heading">
+        <p class="eyebrow">01 / Lo que construimos</p>
+        <h2 id="includes-title">De tu necesidad<br />a una solución concreta.</h2>
+        <p>{service.audience}</p>
+      </div>
+      <div class="deliverable-grid">
+        {service.deliverables.map((item, index) => (
+          <article class="deliverable">
+            <span class="item-number">0{index + 1} /</span>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <div class="service-paper">
+      <FinalePattern />
+      <div class="relative z-10">
+        <section id="como-trabajamos" class="service-container service-section" aria-labelledby="steps-title">
+          <div class="section-heading">
+            <p class="eyebrow">02 / Así avanzamos</p>
+            <h2 id="steps-title">Claridad desde<br />la primera conversación.</h2>
+          </div>
+          <div class="steps-grid">
+            {service.steps.map((step, index) => (
+              <article class="service-step">
+                <span class="step-number">0{index + 1}</span>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section class="service-container service-section faq-section" aria-labelledby="faq-title">
+          <div class="section-heading">
+            <p class="eyebrow">03 / Antes de empezar</p>
+            <h2 id="faq-title">Resolvemos tus dudas.</h2>
+          </div>
+          <div class="faq-list">
+            {service.faqs.map((faq) => (
+              <details>
+                <summary>{faq.question}<span aria-hidden="true">+</span></summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <section id="contacto" class="service-container service-section service-contact" aria-labelledby="contact-title">
+          <p class="eyebrow">El siguiente paso es tuyo</p>
+          <h2 id="contact-title">{isLanding ? 'Haz que tu próxima visita se convierta en una conversación.' : 'Cuéntanos qué quieres resolver.'}</h2>
+          <p>{isLanding ? 'Hablemos de tu marca, tus clientes y tu landing desde S/ 710.' : 'Evaluamos tu caso y preparamos una oferta para lo que tu negocio necesita.'}</p>
+          <a class="service-button dark" href={whatsapp}>{isLanding ? 'Empezar mi landing' : 'Contactar para evaluar una oferta'} <span aria-hidden="true">↗</span></a>
+          <p class="contact-channel">Conversemos por WhatsApp · {siteConfig.phone}</p>
+        </section>
+        <Footer />
+      </div>
+    </div>
+
+    <nav class="service-container related-services" aria-label="Otros servicios de Narez">
+      <p class="eyebrow">También podemos ayudarte con</p>
+      <div>{otherServices.map((item) => <a href={`/${item.slug}`}>{item.name}<span aria-hidden="true">↗</span></a>)}</div>
+    </nav>
+  </main>
+</Layout>
+
+<style>
+  .service-page { overflow: clip; }
+  .service-container { width: min(100%, 87rem); margin-inline: auto; padding-inline: 3rem; }
+  .service-dark { position: relative; isolation: isolate; }
+  .service-pattern { position: absolute; inset: 0; z-index: -1; opacity: 0.5; filter: invert(1); }
+  .service-top { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-block: 2.5rem; }
+  .service-brand { display: inline-flex; align-items: center; gap: 1rem; font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; }
+  .service-brand img { width: 3.8rem; height: auto; filter: invert(1); }
+  .back-link { font-size: 0.85rem; color: #c8c8c8; }
+  .back-link span { margin-left: 0.7rem; }
+  .service-hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 5rem; align-items: center; padding-block: 5rem 7rem; }
+  .eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #91aabb; line-height: 1.6; }
+  h1 { margin-block: 1.8rem; font-size: 4.8rem; font-weight: 700; line-height: 0.98; letter-spacing: -0.065em; text-transform: uppercase; }
+  h1 em { display: block; margin-top: 0.4rem; color: #91aabb; font-style: italic; }
+  .service-description { max-width: 36rem; font-size: 1.13rem; line-height: 1.8; color: #c8c8c8; }
+  .service-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.6rem; margin-top: 2.5rem; }
+  .service-button { display: inline-flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1.2rem 1.5rem; font-size: 0.86rem; line-height: 1.5; font-weight: 700; transition: background-color 160ms, color 160ms; }
+  .light { background: var(--narez-paper); color: var(--narez-ink); }
+  .dark { background: var(--narez-ink); color: var(--narez-paper); }
+  .service-button:hover { background: var(--narez-metal); color: white; }
+  .service-page a:focus-visible, summary:focus-visible { outline: 2px solid #91aabb; outline-offset: 5px; }
+  .text-link { font-size: 0.82rem; text-decoration: underline; text-underline-offset: 0.35rem; }
+  .outcomes { display: flex; flex-wrap: wrap; gap: 0.8rem 1.5rem; margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid #303030; font-size: 0.75rem; color: #c8c8c8; }
+  .outcomes span { color: #91aabb; }
+  .proposal-card { padding: 2.2rem; background: var(--narez-paper); color: var(--narez-ink); box-shadow: 1rem 1rem 0 #49657830; }
+  .card-label { display: flex; justify-content: space-between; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #515151; border-bottom: 1px solid #ccc; padding-bottom: 1.2rem; }
+  .card-label span:last-child { font-size: 1.3rem; color: var(--narez-metal); }
+  .card-service { font-size: 1.2rem; font-weight: 700; margin-top: 1.5rem; }
+  .price-block { padding-block: 1.6rem; }
+  .offer-tag { display: inline-block; padding: 0.35rem 0.65rem; background: #dce5eb; color: #294757; text-transform: uppercase; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em; }
+  .old-price { font-size: 0.85rem; color: #5b5b5b; margin-top: 1.4rem; }
+  .price { font-size: 4.6rem; line-height: 1.15; font-weight: 700; letter-spacing: -0.065em; }
+  .price > span { display: block; margin-block: 0.5rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0; }
+  .price-note { font-size: 0.85rem; line-height: 1.7; color: #515151; margin-top: 0.9rem; }
+  .quote-title { font-size: 2.1rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.04em; margin-top: 1.5rem; }
+  .proposal-points { border-top: 1px solid #ccc; padding-block: 1rem; }
+  .proposal-points li { display: flex; gap: 1rem; padding-block: 0.55rem; font-size: 0.72rem; color: var(--narez-metal); }
+  .proposal-points li span { color: #444; }
+  .proposal-card .service-button { width: 100%; }
+  .scope-note { font-size: 0.65rem; line-height: 1.7; margin-top: 1rem; color: #666; }
+  .service-section { padding-block: 6rem; scroll-margin-top: 2rem; }
+  .section-heading { max-width: 45rem; margin-bottom: 3rem; }
+  h2 { font-size: 3rem; font-weight: 600; line-height: 1.08; letter-spacing: -0.05em; margin-top: 1rem; }
+  .section-heading > p:last-child:not(.eyebrow) { margin-top: 1.5rem; font-size: 1.05rem; line-height: 1.8; color: #bbb; }
+  .deliverable-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem; }
+  .deliverable { padding-top: 1.5rem; border-top: 1px solid #383838; }
+  .item-number { font-size: 0.75rem; color: #91aabb; }
+  h3 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.03em; margin-block: 1rem; }
+  .deliverable p, .service-step p { font-size: 1rem; line-height: 1.8; color: #bbb; max-width: 33rem; }
+  .service-paper { position: relative; isolation: isolate; background: var(--narez-paper); color: var(--narez-ink); }
+  .service-paper .eyebrow { color: #496578; }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+  .service-step { border-top: 1px solid #bbb; padding-top: 1.5rem; }
+  .step-number { font-size: 3.5rem; line-height: 1; color: var(--narez-metal); letter-spacing: -0.08em; }
+  .service-step p { color: #555; }
+  .faq-section { border-top: 1px solid #ccc; }
+  .faq-list { max-width: 60rem; }
+  details { border-bottom: 1px solid #bbb; }
+  summary { display: flex; justify-content: space-between; gap: 1.5rem; padding-block: 1.5rem; font-weight: 600; font-size: 1.1rem; cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary span { font-weight: 400; color: var(--narez-metal); }
+  details[open] summary span { transform: rotate(45deg); }
+  details p { max-width: 49rem; padding-bottom: 1.5rem; font-size: 1rem; line-height: 1.8; color: #555; }
+  .service-contact { border-top: 1px solid #ccc; }
+  .service-contact h2 { max-width: 55rem; font-size: 3.8rem; }
+  .service-contact > p:not(.eyebrow) { margin-top: 1.5rem; max-width: 38rem; font-size: 1.1rem; line-height: 1.8; color: #555; }
+  .service-contact .service-button { margin-top: 2rem; }
+  .service-contact .contact-channel { font-size: 0.8rem !important; }
+  .related-services { padding-block: 3rem; }
+  .related-services > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; margin-top: 1.5rem; }
+  .related-services a { display: flex; justify-content: space-between; gap: 1rem; padding-block: 1rem; border-top: 1px solid #444; font-size: 0.9rem; }
+  @media (max-width: 1023px) {
+    .service-hero { gap: 2.5rem; }
+    h1 { font-size: 3.5rem; }
+    .service-container { padding-inline: 2rem; }
+    .proposal-card { padding: 1.5rem; }
+    .price { font-size: 3.8rem; }
+  }
+  @media (max-width: 767px) {
+    .service-container { padding-inline: 1.5rem; }
+    .service-top { padding-top: 7rem; padding-bottom: 1rem; flex-wrap: wrap; gap: 1rem; }
+    .service-hero { grid-template-columns: 1fr; padding-block: 3rem 4rem; gap: 3rem; }
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    .service-description { font-size: 1rem; }
+    .service-actions { gap: 1.5rem; }
+    .proposal-card { box-shadow: 0.5rem 0.5rem 0 #49657830; }
+    .deliverable-grid, .steps-grid, .related-services > div { grid-template-columns: 1fr; gap: 2rem; }
+    .service-section { padding-block: 4rem; }
+    .service-contact h2 { font-size: 2.5rem; }
+    .service-button { gap: 1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .service-button { transition: none; }
+  }
+</style>
